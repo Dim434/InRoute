@@ -17,7 +17,9 @@ NSMutableArray *shopsWay;
 int curShop = 0;
 bool changedData = false;
 int curStore = 1;
-
+float getDistance(float x1, float y1, float x2, float y2){
+    return sqrtf((x1 - x2)* (x1 - x2) + (y1 - y2)*(y1 - y2));
+}
 @interface SearchPlaceController ()
 
 @end
@@ -39,11 +41,44 @@ int curStore = 1;
 @end
 
 @implementation InitViewController
+
+- (NSDictionary *)getNearest{
+    id data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/getListOfStores/"]];
+    NSLog(@"ffff");
+    NSArray *stores = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSDictionary *Nearest = stores[0];
+    for (NSDictionary *point in stores) {
+        if(getDistance([[point valueForKey:@"pos_x"] floatValue], [[point valueForKey:@"pos_y"] floatValue], self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude) <getDistance([[Nearest valueForKey:@"pos_x"] floatValue], [[Nearest valueForKey:@"pos_y"] floatValue], self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude) ){
+            Nearest = point;
+        }
+    }
+    return Nearest;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.routeButton.layer.cornerRadius = 5;
     self.routeButton.clipsToBounds = YES;
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+    NSDictionary *point = [self getNearest];
+    NSLog(@"233");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Геопозиция"
+                                                                   message:[NSString stringWithFormat:@"Вы случайно не в %@", [point valueForKey:@"title"]] preferredStyle:UIAlertControllerStyleAlert];
+    NSLog(@"12322");
+    UIAlertAction* actionCancel = [UIAlertAction actionWithTitle:@"Нет" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction* actionYes= [UIAlertAction actionWithTitle:@"Да" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+        [self.textField setText:[point valueForKey:@"title"]];
+        curStore = [[point valueForKey:@"id"] intValue];
+    }];
+    [alert addAction:actionYes];
+    [alert addAction:actionCancel];
+    [self presentViewController:alert animated:YES completion:nil];
+
 
 }
 

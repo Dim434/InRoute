@@ -8,18 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "MapView.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface SearchPlaceController : UIViewController
+
+@interface SearchPlaceController : UIViewController 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *currentStores;
 @property NSDictionary *returnedData;
 @end
 
-@interface InitViewController : UIViewController
+@interface InitViewController : UIViewController <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *routeButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-
+@property (nonatomic,retain) CLLocationManager *locationManager;
 @end
 
 @interface ViewController : UIViewController <UIScrollViewDelegate>

@@ -16,20 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-7l-Hxe">
-                                <rect key="frame" x="0.0" y="819" width="414" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Поиск" image="magnifyingglass" catalog="system" id="dhf-Vf-TRI"/>
-                                    <tabBarItem tag="1" title="Больше" image="gear" catalog="system" id="DnZ-lk-fcm"/>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="GOo-2x-aCw" id="UR8-hz-vYc"/>
-                                </connections>
-                            </tabBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dIk-xm-sAh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="819"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="LOY-5g-typ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="cfH-PX-2rq"/>
@@ -54,6 +42,18 @@
                                     <action selector="routeMap:" destination="QMy-Vq-cMr" eventType="touchDown" id="DSV-pW-EqS"/>
                                 </connections>
                             </button>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-7l-Hxe">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Поиск" image="magnifyingglass" catalog="system" id="dhf-Vf-TRI"/>
+                                    <tabBarItem tag="1" title="Больше" image="gear" catalog="system" id="DnZ-lk-fcm"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="GOo-2x-aCw" id="UR8-hz-vYc"/>
+                                </connections>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GDW-4i-E9L"/>
@@ -184,7 +184,7 @@
                                 <rect key="frame" x="155" y="469" width="105" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.55212438109999995" green="0.75230753419999996" blue="0.35285824539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Выбрать!">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
