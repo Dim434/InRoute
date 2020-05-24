@@ -78,7 +78,7 @@ float getDistance(float x1, float y1, float x2, float y2){
     [alert addAction:actionYes];
     [alert addAction:actionCancel];
     [self presentViewController:alert animated:YES completion:nil];
-
+    [self.locationManager stopUpdatingLocation];
 
 }
 
@@ -210,7 +210,7 @@ float getDistance(float x1, float y1, float x2, float y2){
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setClipsToBounds:YES];
-    self.scrollView.minimumZoomScale = 1.0;
+    self.scrollView.minimumZoomScale = scaleF;
     self.scrollView.maximumZoomScale = 5.0;
     self.scrollView.delegate = self;
 }
