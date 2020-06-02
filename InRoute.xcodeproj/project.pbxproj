@@ -18,7 +18,7 @@
 		C199C297243D219000EEDCF6 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = C199C296243D219000EEDCF6 /* pointer.png */; };
 		C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C199C299243D33F200EEDCF6 /* MapView.xib */; };
 		C199C29D243D348400EEDCF6 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = C199C29C243D348400EEDCF6 /* MapView.m */; };
-		C1E38A702448BB29007ED1D7 /* Horisontal_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E38A6F2448BB29007ED1D7 /* Horisontal_logo.png */; };
+		C1E0C4E924867DE80028CA45 /* Horisontal_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E0C4E824867DE80028CA45 /* Horisontal_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		C199C299243D33F200EEDCF6 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		C199C29B243D348400EEDCF6 /* MapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		C199C29C243D348400EEDCF6 /* MapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
-		C1E38A6F2448BB29007ED1D7 /* Horisontal_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Horisontal_logo.png; sourceTree = "<group>"; };
+		C1E0C4E824867DE80028CA45 /* Horisontal_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Horisontal_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 		C199C298243D21A500EEDCF6 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C1E38A6F2448BB29007ED1D7 /* Horisontal_logo.png */,
+				C1E0C4E824867DE80028CA45 /* Horisontal_logo.png */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -159,12 +159,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FFFAB6242A94D900B09A4A /* LaunchScreen.storyboard in Resources */,
-				C1E38A702448BB29007ED1D7 /* Horisontal_logo.png in Resources */,
 				84FFFAB3242A94D900B09A4A /* Assets.xcassets in Resources */,
 				C199C297243D219000EEDCF6 /* pointer.png in Resources */,
 				C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */,
 				84FFFAB1242A94D600B09A4A /* Main.storyboard in Resources */,
 				C15A6229242FF8F10030686E /* init.jpg in Resources */,
+				C1E0C4E924867DE80028CA45 /* Horisontal_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,10 +320,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
 				INFOPLIST_FILE = InRoute/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,10 +339,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
 				INFOPLIST_FILE = InRoute/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

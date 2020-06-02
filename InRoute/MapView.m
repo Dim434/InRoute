@@ -41,9 +41,12 @@
 - (void)drawImage:(UIImage *)img {
     if(self.image)
         [self.image removeFromSuperview];
-    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, img.size.width, img.size.height)];
+
+    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.origin.x,self.frame.origin.y, img.size.width, img.size.height)];
+    
     [image setImage:img];
     self.image = image;
+    image.frame = CGRectMake(self.frame.origin.x,[UIScreen mainScreen].bounds.size.height / 4, img.size.width, img.size.height);
     [self addSubview:image];
     NSLog(@"%@",[self.lines count]);
     for (CAShapeLayer *layer in self.lines) {
