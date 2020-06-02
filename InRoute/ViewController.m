@@ -19,6 +19,7 @@ NSMutableArray *shopsWay;
 int curShop = 0;
 bool changedData = false;
 int curStore = 1;
+NSString *storeName = @"";
 float getDistance(float x1, float y1, float x2, float y2){
     return sqrtf((x1 - x2)* (x1 - x2) + (y1 - y2)*(y1 - y2));
 }
@@ -53,12 +54,28 @@ float getDistance(float x1, float y1, float x2, float y2){
     }
     return Nearest;
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // hide nav bar
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+
+    // enable slide-back
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    }
+}
+
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.routeButton.layer.cornerRadius = 5;
     self.routeButton.clipsToBounds = YES;
-    [[self navigationController] setNavigationBarHidden:YES animated:NO];
-    
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -90,6 +107,7 @@ float getDistance(float x1, float y1, float x2, float y2){
 }
 
 - (IBAction)goToMap:(UIButton *)sender {
+    storeName = self.textField.text;
     NSString *storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
@@ -100,7 +118,22 @@ float getDistance(float x1, float y1, float x2, float y2){
 @end
 
 @implementation SearchPlaceController
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // hide nav bar
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
 
+    // enable slide-back
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    }
+}
+
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -184,6 +217,7 @@ float getDistance(float x1, float y1, float x2, float y2){
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initData];
+    [self.storeLabel setText:storeName];
     self.stepButton.layer.cornerRadius = 38 / 2.0f;
     [self.stepButton.layer setShadowOffset:CGSizeMake(5, 5)];
     [self.stepButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
@@ -370,6 +404,7 @@ float getDistance(float x1, float y1, float x2, float y2){
     if ([self.delegate respondsToSelector:@selector(selectedData:)]) {
         [self.delegate selectedData:selected];
     }
+    [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

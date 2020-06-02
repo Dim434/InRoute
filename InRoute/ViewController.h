@@ -22,13 +22,13 @@
 @property NSDictionary *returnedData;
 @end
 
-@interface InitViewController : UIViewController <CLLocationManagerDelegate>
+@interface InitViewController : UIViewController <CLLocationManagerDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *routeButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @end
 
-@interface ViewController : UIViewController <UIScrollViewDelegate, SearchControllerProtocol>
+@interface ViewController : UIViewController <UIScrollViewDelegate, SearchControllerProtocol, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITabBar *tabbar;
 @property (weak, nonatomic) IBOutlet MapView *mpView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *toField;
 @property (weak, nonatomic) IBOutlet UIButton *stepButton;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
+@property (weak, nonatomic) IBOutlet UILabel *storeLabel;
 
 
 @end
