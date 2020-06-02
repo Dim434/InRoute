@@ -70,7 +70,7 @@
 }
 
 - (void)drawShop:(NSDictionary *)shop {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([[shop valueForKey:@"pos_x"] intValue] + self.image.frame.origin.x, [[shop valueForKey:@"pos_y"] intValue] + self.image.frame.origin.y, 25, 25)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([[shop valueForKey:@"pos_x"] intValue] + self.image.frame.origin.x, [[shop valueForKey:@"pos_y"] intValue] + self.image.frame.origin.y, 16, 16)];
     [imageView setImage:[UIImage imageNamed:[NSString stringWithString:@"pointer.png"]]];
     [self addSubview:imageView];
     if (!self.shops) self.shops = [[NSMutableArray alloc] init];

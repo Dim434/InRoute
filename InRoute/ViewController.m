@@ -12,6 +12,8 @@
 NSArray *shops;
 
 NSDictionary *from, *to;
+NSDictionary *selected;
+bool isFrom=true;
 NSMutableArray *way;
 NSMutableArray *shopsWay;
 int curShop = 0;
@@ -36,9 +38,6 @@ float getDistance(float x1, float y1, float x2, float y2){
 - (void)initData;
 @end
 
-@interface InfoController ()
-- (void)setObject:(NSDictionary *)obj;
-@end
 
 @implementation InitViewController
 
@@ -115,7 +114,7 @@ float getDistance(float x1, float y1, float x2, float y2){
     self.tableView.dataSource = self;
     self.currentStores = [[NSMutableArray alloc] initWithArray:stores];
 
-
+    [self.tabBarController setSelectedIndex:0];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -185,6 +184,10 @@ float getDistance(float x1, float y1, float x2, float y2){
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initData];
+    self.stepButton.layer.cornerRadius = 38 / 2.0f;
+    [self.stepButton.layer setShadowOffset:CGSizeMake(5, 5)];
+    [self.stepButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [self.stepButton.layer setShadowOpacity:0.5];
     self.tabbar.delegate = self;
     NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getListOfShops/%d/", curStore]]];
     NSDictionary *val = [[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil] objectAtIndex:0];
@@ -227,10 +230,6 @@ float getDistance(float x1, float y1, float x2, float y2){
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
 
     if (item.tag == 0) {
-        NSString *storyboardName = @"Main";
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SearchController"];
-        [self presentViewController:vc animated:YES completion:nil];
 
     }
 }
@@ -300,7 +299,38 @@ float getDistance(float x1, float y1, float x2, float y2){
         }
     }
 }
+- (IBAction)fromSelect:(id)sender {
+    isFrom=true;
+    NSString *storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    SearchController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SearchController"];
+    vc.delegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
 
+- (IBAction)toFieldSelect:(id)sender {
+    isFrom = false;
+    NSString *storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    SearchController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SearchController"];
+    vc.delegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
+    
+}
+- (void)selectedData:(NSDictionary*)selected{
+    
+    if(isFrom == true){
+        from = selected;
+        NSLog(@"%@",[selected valueForKey:@"title"]);
+        [self.fromField setText:[selected valueForKey:@"title"]  ];
+        
+    }
+    else{
+        to = selected;
+        [self.toField setText:[selected valueForKey:@"title"]];
+    }
+}
 
 @end
 
@@ -336,15 +366,18 @@ float getDistance(float x1, float y1, float x2, float y2){
     cell.textLabel.text = [shop valueForKey:@"title"];
     return cell;
 }
+- (void)OnDoneBlock {
+    if ([self.delegate respondsToSelector:@selector(selectedData:)]) {
+        [self.delegate selectedData:selected];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     self.returnedData = [self.currentShops objectAtIndex:indexPath.row];
-    NSString *storyboardName = @"Main";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    InfoController *vc = [storyboard instantiateViewControllerWithIdentifier:@"InfoController"];
-    [self presentViewController:vc animated:YES completion:nil];
-    [vc setObject:[self returnedData]];
+    selected = self.returnedData;
+    [self OnDoneBlock];
 
 }
 
@@ -371,32 +404,4 @@ float getDistance(float x1, float y1, float x2, float y2){
 
 }
 
-@end
-
-@implementation InfoController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)setObject:(NSDictionary *)obj {
-    self.shopTitle.title = [obj valueForKey:@"title"];
-    NSLog([obj valueForKey:@"title"]);
-    self.obj = obj;
-}
-
-- (IBAction)selectFrom:(id)sender {
-    from = self.obj;
-    changedData = true;
-    NSLog(@"%f", [self.obj objectForKey:@"pos_x"]);
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-}
-
-- (IBAction)selectTo:(id)sender {
-    to = self.obj;
-    changedData = true;
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-}
 @end

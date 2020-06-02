@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dIk-xm-sAh">
-                                <rect key="frame" x="0.0" y="97" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="97" width="414" height="599"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="LOY-5g-typ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="cfH-PX-2rq"/>
@@ -25,47 +25,69 @@
                                 </connections>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="255" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5N-vt-zE2">
-                                <rect key="frame" x="8" y="600" width="398" height="120"/>
+                                <rect key="frame" x="8" y="573" width="398" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctM-Ig-Fru">
-                                <rect key="frame" x="0.0" y="750" width="414" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Horisontal_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="67c-u1-701">
+                                <rect key="frame" x="20" y="44" width="168" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Построить">
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctM-Ig-Fru">
+                                <rect key="frame" x="355" y="737" width="39" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" image="location" catalog="system">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="routeMap:" destination="QMy-Vq-cMr" eventType="touchDown" id="DSV-pW-EqS"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rnE-LU-0NU">
+                                <rect key="frame" x="20" y="701" width="327" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="fromSelect:" destination="QMy-Vq-cMr" eventType="touchDown" id="0WO-1Y-4Em"/>
+                                </connections>
+                            </textField>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-7l-Hxe">
-                                <rect key="frame" x="0.0" y="812" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="Поиск" image="magnifyingglass" catalog="system" id="dhf-Vf-TRI"/>
-                                    <tabBarItem tag="1" title="Больше" image="gear" catalog="system" id="DnZ-lk-fcm"/>
+                                    <tabBarItem title="Навигатор" image="location.fill" catalog="system" id="dhf-Vf-TRI"/>
+                                    <tabBarItem tag="1" title="Профиль" image="person.fill" catalog="system" id="DnZ-lk-fcm"/>
                                 </items>
                                 <connections>
                                     <outlet property="delegate" destination="GOo-2x-aCw" id="UR8-hz-vYc"/>
                                 </connections>
                             </tabBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Horisontal_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="67c-u1-701">
-                                <rect key="frame" x="20" y="44" width="168" height="45"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Куда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ac-C0-juX">
+                                <rect key="frame" x="20" y="751" width="327" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="toFieldSelect:" destination="QMy-Vq-cMr" eventType="touchDown" id="Cj3-bs-TY7"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GDW-4i-E9L"/>
                     </view>
                     <navigationItem key="navigationItem" id="ep1-eh-2kI"/>
                     <connections>
+                        <outlet property="fromField" destination="rnE-LU-0NU" id="1xx-rk-puk"/>
                         <outlet property="scrollView" destination="dIk-xm-sAh" id="0eP-4t-qJQ"/>
+                        <outlet property="stepButton" destination="ctM-Ig-Fru" id="fJM-ka-eHn"/>
                         <outlet property="stepLabel" destination="r5N-vt-zE2" id="e3O-qZ-628"/>
                         <outlet property="tabbar" destination="aQc-7l-Hxe" id="m1U-Lb-aAJ"/>
+                        <outlet property="toField" destination="0Ac-C0-juX" id="vyy-3e-L5h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bL-Iy-LSZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -109,55 +131,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jc-Hg-q09" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-336.23188405797106" y="-983.03571428571422"/>
-        </scene>
-        <!--Info Controller-->
-        <scene sceneID="LeW-LN-vLB">
-            <objects>
-                <viewController storyboardIdentifier="InfoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RML-vt-q8w" customClass="InfoController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="K6G-nv-qWa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcI-jv-bLB">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" leftItemsSupplementBackButton="YES" id="GxF-9x-uhR">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="W7o-Og-uXM"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXJ-Xu-MKW">
-                                <rect key="frame" x="20" y="377" width="165" height="142"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Откуда">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectFrom:" destination="RML-vt-q8w" eventType="touchDown" id="n3h-jB-ejI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RVK-dh-qA6">
-                                <rect key="frame" x="213" y="410" width="181" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Куда"/>
-                                <connections>
-                                    <action selector="selectTo:" destination="RML-vt-q8w" eventType="touchDown" id="P8V-8i-2Ur"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="NI3-Y9-Z64"/>
-                    </view>
-                    <connections>
-                        <outlet property="navBar" destination="zcI-jv-bLB" id="F99-JT-yvN"/>
-                        <outlet property="shopTitle" destination="GxF-9x-uhR" id="6av-Z6-kGX"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Kz-YX-Bws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="730.43478260869574" y="-991.07142857142856"/>
         </scene>
         <!--Init View Controller-->
         <scene sceneID="Ec7-G1-Mcg">
@@ -266,7 +239,8 @@
     </scenes>
     <resources>
         <image name="Horisontal_logo.png" width="10500" height="3000"/>
-        <image name="gear" catalog="system" width="128" height="119"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="location" catalog="system" width="128" height="115"/>
+        <image name="location.fill" catalog="system" width="128" height="115"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>

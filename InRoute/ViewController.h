@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MapView.h"
 #import <CoreLocation/CoreLocation.h>
-
+@protocol SearchControllerProtocol <NSObject>
+@required
+- (void)selectedData:(NSDictionary *)selected;
+ 
+@end
 
 @interface SearchPlaceController : UIViewController 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -24,23 +28,22 @@
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @end
 
-@interface ViewController : UIViewController <UIScrollViewDelegate>
+@interface ViewController : UIViewController <UIScrollViewDelegate, SearchControllerProtocol>
 @property (weak, nonatomic) IBOutlet UITabBar *tabbar;
 @property (weak, nonatomic) IBOutlet MapView *mpView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *fromField;
+@property (weak, nonatomic) IBOutlet UITextField *toField;
+@property (weak, nonatomic) IBOutlet UIButton *stepButton;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
 
 
 @end
+
 @interface SearchController :  UIViewController <UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSDictionary *returnedData;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property NSMutableArray *currentShops;
-@end
-
-@interface InfoController : UIViewController
-@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
-@property (weak, nonatomic) IBOutlet UINavigationItem *shopTitle;
-@property NSDictionary *obj;
+@property (weak, nonatomic) id<SearchControllerProtocol> delegate;
 @end
