@@ -19,6 +19,8 @@ NSMutableArray *shopsWay;
 int curShop = 0;
 bool changedData = false;
 int curStore = 1;
+NSString * account_session = @"";
+NSString * account_email = @"";
 NSString *storeName = @"";
 float getDistance(float x1, float y1, float x2, float y2){
     return sqrtf((x1 - x2)* (x1 - x2) + (y1 - y2)*(y1 - y2));
@@ -39,6 +41,13 @@ float getDistance(float x1, float y1, float x2, float y2){
 - (void)initData;
 @end
 
+@interface AuthController ()
+
+@end
+
+@interface AccountController ()
+
+@end
 
 @implementation InitViewController
 
@@ -209,6 +218,10 @@ float getDistance(float x1, float y1, float x2, float y2){
 
 @implementation ViewController
 - (void)initData {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    account_session = [prefs valueForKey:@"session_inroute"];
+    account_email = [prefs valueForKey:@"email_inroute"];
+
     NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getListOfShops/%d/", curStore]]];
     shops = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
@@ -233,11 +246,13 @@ float getDistance(float x1, float y1, float x2, float y2){
 
     [self.scrollView addSubview:mpView];
     double scaleF = self.scrollView.frame.size.width / img.size.width;
-    NSLog(@"%f", scaleF);
+    
+    NSLog(@"Float: %f, %f, %f", scaleF, img.size.width, img.size.height);
     self.mpView.frame = CGRectMake(0, 0, img.size.width, img.size.height);
-    self.mpView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleF, scaleF);
     self.mpView.center = CGPointMake(self.scrollView.frame.size.width / 2,
             self.scrollView.frame.size.height / 2 - img.size.height / 2);
+
+    self.mpView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleF, scaleF);
 
     [mpView drawImage:img];
     for (NSDictionary *shop in shops) {
@@ -262,9 +277,23 @@ float getDistance(float x1, float y1, float x2, float y2){
 
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-
+    NSLog(@"%d", item.tag);
     if (item.tag == 0) {
 
+    }
+    else if (item.tag == 1){
+        if(!account_session )
+            account_session = @"";
+        if([account_session isEqualToString:@""]){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        AuthController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AuthController"];
+            [self presentViewController:vc animated:YES completion:nil];
+    }
+        else{
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            AccountController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AccountController"];
+                [self presentViewController:vc animated:YES completion:nil];
+        }
     }
 }
 
@@ -281,7 +310,9 @@ float getDistance(float x1, float y1, float x2, float y2){
             MapView *mpView = [[MapView alloc] init];
             self.mpView = mpView;
             self.mpView.frame = CGRectMake(0, 0, MAX(self.scrollView.frame.size.width, img.size.width), MAX(self.scrollView.frame.size.height, img.size.height));
-
+            for (UIView *view in self.scrollView.subviews) {
+                [view removeFromSuperview];
+            }
             [self.scrollView addSubview:mpView];
             double scaleF = self.scrollView.frame.size.width / img.size.width;
             NSLog(@"%f", scaleF);
@@ -437,6 +468,166 @@ float getDistance(float x1, float y1, float x2, float y2){
     [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
 
+}
+
+@end
+
+@implementation AuthController
+
+- (void)viewDidLoad{
+    NSLog(@"loaded");
+    [super viewDidLoad];
+}
+- (IBAction)loginButton:(id)sender {
+    [self.view endEditing:YES];
+    __block bool dismisss = false;
+    NSString * email = self.emailField.text;
+    NSString * password = self.passwordField.text;
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/login/"]];
+
+    NSString *userUpdate =[NSString stringWithFormat:@"email=%@&password=%@",email,password, nil];
+
+    //create the Method "GET" or "POST"
+
+    //Convert the String to Data
+
+    //Apply the data to the body
+    [request setHTTPMethod:@"POST"];
+
+    //Pass The String to server(YOU SHOULD GIVE YOUR PARAMETERS INSTEAD OF MY PARAMETERS)
+
+    //Check The Value what we passed
+    NSLog(@"the data Details is =%@", userUpdate);
+
+      //Convert the String to Data
+    NSData *data1 = [userUpdate dataUsingEncoding:NSUTF8StringEncoding];
+
+      //Apply the data to the body
+    [request setHTTPBody:data1];
+
+     //Create the response and Error
+    NSError *err;
+    NSURLResponse *response;
+
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+
+    NSDictionary *res = [[NSDictionary alloc] initWithDictionary:[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil]];
+
+     //This is for Response
+    NSLog(@"got response==%@", res);
+    if(res && [res objectForKey:@"key"])
+    {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:[res objectForKey:@"key"] forKey:@"session_inroute"];
+        [prefs setObject:email forKey:@"email_inroute"];
+        account_session = [res objectForKey:@"key"];
+        account_email = email;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        NSLog(@"Error");
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                       message:@"Неправильный логин/пароль"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    }
+    if(dismisss)
+        [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (IBAction)registerButton:(id)sender {
+    [self.view endEditing:YES];
+    __block bool dismisss = false;
+    NSString * email = self.emailField.text;
+    NSString * password = self.passwordField.text;
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/register/"]];
+
+    NSString *userUpdate =[NSString stringWithFormat:@"email=%@&password=%@",email,password, nil];
+
+    //create the Method "GET" or "POST"
+
+    //Convert the String to Data
+
+    //Apply the data to the body
+    [request setHTTPMethod:@"POST"];
+
+    //Pass The String to server(YOU SHOULD GIVE YOUR PARAMETERS INSTEAD OF MY PARAMETERS)
+
+    //Check The Value what we passed
+    NSLog(@"the data Details is =%@", userUpdate);
+
+      //Convert the String to Data
+    NSData *data1 = [userUpdate dataUsingEncoding:NSUTF8StringEncoding];
+
+      //Apply the data to the body
+    [request setHTTPBody:data1];
+
+     //Create the response and Error
+    NSError *err;
+    NSURLResponse *response;
+
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+
+    NSDictionary *res = [[NSDictionary alloc] initWithDictionary:[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil]];
+
+     //This is for Response
+    NSLog(@"got response==%@", res);
+    if(res && [res objectForKey:@"key"])
+    {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:[res objectForKey:@"key"] forKey:@"session_inroute"];
+        [prefs setObject:email forKey:@"email_inroute"];
+        account_session = [res objectForKey:@"key"];
+        account_email = email;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        NSLog(@"Error");
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                       message:@"Email уже занят"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    }
+    if(dismisss)
+        [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+@end
+
+@implementation AccountController
+
+- (void)viewDidLoad{
+    if(account_session && account_email){
+        [self.emailLabel setText:account_email];
+    }
+    
+}
+- (IBAction)logout:(id)sender {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:@"" forKey:@"session_inroute"];
+    [prefs setObject:@"" forKey:@"email_inroute"];
+    account_email = @"";
+    account_session = @"";
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

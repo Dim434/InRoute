@@ -48,3 +48,14 @@
 @property NSMutableArray *currentShops;
 @property (weak, nonatomic) id<SearchControllerProtocol> delegate;
 @end
+@interface AuthController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
+@end
+
+@interface AccountController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextView *emailLabel;
+
+
+@end
