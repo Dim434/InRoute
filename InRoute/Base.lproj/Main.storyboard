@@ -65,7 +65,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfm-SG-5f0">
-                                <rect key="frame" x="232" y="96" width="182" height="40"/>
+                                <rect key="frame" x="148" y="96" width="266" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <color key="textColor" red="0.55212438109999995" green="0.75230753419999996" blue="0.35285824539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -262,7 +262,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KQQ-aY-6o1" customClass="tableView">
-                                <rect key="frame" x="0.0" y="122" width="414" height="754"/>
+                                <rect key="frame" x="0.0" y="184" width="414" height="692"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
@@ -274,6 +274,38 @@
                                     <outlet property="delegate" destination="69M-RH-OdK" id="2AO-zu-VIy"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQx-EH-Pzd">
+                                <rect key="frame" x="20" y="129" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="University" image="Слой 3.png"/>
+                                <connections>
+                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="Xmc-g8-MTB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Cy-7K-siA">
+                                <rect key="frame" x="133" y="129" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Shopping Center" image="Слой 2.png"/>
+                                <connections>
+                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="1uY-mb-yMV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjt-Ny-ZcH">
+                                <rect key="frame" x="241" y="129" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Business Center" image="Бизнес-Центр.png"/>
+                                <connections>
+                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="0ov-oH-tiH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aoj-RV-m1v">
+                                <rect key="frame" x="347" y="129" width="47" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Park" image="Парки.png"/>
+                                <connections>
+                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="PT5-1h-efr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="QbL-dB-J7q"/>
@@ -346,5 +378,9 @@
         <image name="location" catalog="system" width="128" height="115"/>
         <image name="location.fill" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="Бизнес-Центр.png" width="255" height="186"/>
+        <image name="Парки.png" width="342" height="267"/>
+        <image name="Слой 2.png" width="319" height="212"/>
+        <image name="Слой 3.png" width="260" height="230"/>
     </resources>
 </document>

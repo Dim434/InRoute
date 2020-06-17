@@ -14,6 +14,10 @@
 		84FFFAB3242A94D900B09A4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84FFFAB2242A94D900B09A4A /* Assets.xcassets */; };
 		84FFFAB6242A94D900B09A4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FFFAB4242A94D900B09A4A /* LaunchScreen.storyboard */; };
 		84FFFAB9242A94D900B09A4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFAB8242A94D900B09A4A /* main.m */; };
+		C122E6FD24990D5E00A49062 /* Слой 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E6FC24990D5E00A49062 /* Слой 3.png */; };
+		C122E6FF24990DF100A49062 /* Слой 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E6FE24990DF100A49062 /* Слой 2.png */; };
+		C122E701249AB04000A49062 /* Парки.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E700249AB04000A49062 /* Парки.png */; };
+		C122E703249AB1FE00A49062 /* Бизнес-Центр.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E702249AB1FE00A49062 /* Бизнес-Центр.png */; };
 		C15A6229242FF8F10030686E /* init.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C15A6228242FF8F10030686E /* init.jpg */; };
 		C199C297243D219000EEDCF6 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = C199C296243D219000EEDCF6 /* pointer.png */; };
 		C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C199C299243D33F200EEDCF6 /* MapView.xib */; };
@@ -34,6 +38,10 @@
 		84FFFAB5242A94D900B09A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84FFFAB7242A94D900B09A4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84FFFAB8242A94D900B09A4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C122E6FC24990D5E00A49062 /* Слой 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Слой 3.png"; sourceTree = "<group>"; };
+		C122E6FE24990DF100A49062 /* Слой 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Слой 2.png"; sourceTree = "<group>"; };
+		C122E700249AB04000A49062 /* Парки.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Парки.png"; sourceTree = "<group>"; };
+		C122E702249AB1FE00A49062 /* Бизнес-Центр.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Бизнес-Центр.png"; sourceTree = "<group>"; };
 		C15A6228242FF8F10030686E /* init.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = init.jpg; sourceTree = "<group>"; };
 		C199C296243D219000EEDCF6 /* pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointer.png; sourceTree = "<group>"; };
 		C199C299243D33F200EEDCF6 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
@@ -96,6 +104,10 @@
 		C199C298243D21A500EEDCF6 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C122E702249AB1FE00A49062 /* Бизнес-Центр.png */,
+				C122E700249AB04000A49062 /* Парки.png */,
+				C122E6FE24990DF100A49062 /* Слой 2.png */,
+				C122E6FC24990D5E00A49062 /* Слой 3.png */,
 				C1E0C4E824867DE80028CA45 /* Horisontal_logo.png */,
 			);
 			path = src;
@@ -159,8 +171,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FFFAB6242A94D900B09A4A /* LaunchScreen.storyboard in Resources */,
+				C122E6FD24990D5E00A49062 /* Слой 3.png in Resources */,
+				C122E6FF24990DF100A49062 /* Слой 2.png in Resources */,
 				84FFFAB3242A94D900B09A4A /* Assets.xcassets in Resources */,
 				C199C297243D219000EEDCF6 /* pointer.png in Resources */,
+				C122E703249AB1FE00A49062 /* Бизнес-Центр.png in Resources */,
+				C122E701249AB04000A49062 /* Парки.png in Resources */,
 				C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */,
 				84FFFAB1242A94D600B09A4A /* Main.storyboard in Resources */,
 				C15A6229242FF8F10030686E /* init.jpg in Resources */,
@@ -320,7 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
 				INFOPLIST_FILE = InRoute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -339,7 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
 				INFOPLIST_FILE = InRoute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

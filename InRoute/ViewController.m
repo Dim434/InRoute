@@ -19,9 +19,11 @@ NSMutableArray *shopsWay;
 int curShop = 0;
 bool changedData = false;
 int curStore = 1;
+NSArray* stores;
 NSString * account_session = @"";
 NSString * account_email = @"";
-NSString *storeName = @"";
+NSString * storeName = @"";
+NSString * category = nil;
 float getDistance(float x1, float y1, float x2, float y2){
     return sqrtf((x1 - x2)* (x1 - x2) + (y1 - y2)*(y1 - y2));
 }
@@ -54,7 +56,7 @@ float getDistance(float x1, float y1, float x2, float y2){
 - (NSDictionary *)getNearest{
     id data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/getListOfStores/"]];
     NSLog(@"ffff");
-    NSArray *stores = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    stores = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSDictionary *Nearest = stores[0];
     for (NSDictionary *point in stores) {
         if(getDistance([[point valueForKey:@"pos_x"] floatValue], [[point valueForKey:@"pos_y"] floatValue], self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude) <getDistance([[Nearest valueForKey:@"pos_x"] floatValue], [[Nearest valueForKey:@"pos_y"] floatValue], self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude) ){
@@ -148,7 +150,7 @@ float getDistance(float x1, float y1, float x2, float y2){
     [super viewDidLoad];
     id data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/getListOfStores/"]];
     NSLog(@"ffff");
-    NSArray *stores = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    stores = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSArray *arr = [[NSArray alloc] initWithArray:stores];
     NSLog(@"%@", [[arr objectAtIndex:0] valueForKey:@"id"]);
     self.tableView.delegate = self;
@@ -178,6 +180,89 @@ float getDistance(float x1, float y1, float x2, float y2){
     cell.textLabel.text = [shop valueForKey:@"title"];
     return cell;
 }
+- (IBAction)categorySelect:(UIButton *)sender {
+    NSMutableArray *deleteIndexPaths = [[NSMutableArray alloc] init];
+    NSMutableArray *insertIndexPaths = [[NSMutableArray alloc] init];
+    NSString* title = sender.titleLabel.text;
+    NSLog(@"%@", title);
+    if ([title isEqualToString:@"University"]){
+        category = @"университеты";
+        NSLog(@"U");
+        for (int i = 0; i < [self.currentStores count]; i++) {
+            [deleteIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+
+        }
+        [self.currentStores removeAllObjects];
+        int cnt = 0;
+        for (NSDictionary *obj in stores) {
+            if ([[[obj valueForKey:@"category"] lowercaseString] isEqualToString:@"университеты"]) {
+                [self.currentStores addObject:obj];
+                [insertIndexPaths addObject:[NSIndexPath indexPathForRow:cnt inSection:0]];
+                cnt++;
+            }
+        }
+    }
+    else if([title isEqualToString:@"Shopping Center"]){
+        NSLog(@"SC");
+        category = @"торговые центры";
+        for (int i = 0; i < [self.currentStores count]; i++) {
+            [deleteIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+
+        }
+        [self.currentStores removeAllObjects];
+        int cnt = 0;
+        for (NSDictionary *obj in stores) {
+            NSLog(@"%@", [[obj valueForKey:@"category"] lowercaseString]);
+            if ([[[obj valueForKey:@"category"] lowercaseString] isEqualToString:@"торговые центры"]) {
+                [self.currentStores addObject:obj];
+                [insertIndexPaths addObject:[NSIndexPath indexPathForRow:cnt inSection:0]];
+                cnt++;
+            }
+        }
+        
+    }
+    else if([title isEqualToString:@"Business Center"]){
+        category = @"бизнес-центры";
+        NSLog(@"BC");
+        for (int i = 0; i < [self.currentStores count]; i++) {
+            [deleteIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+
+        }
+        [self.currentStores removeAllObjects];
+        int cnt = 0;
+        for (NSDictionary *obj in stores) {
+            if ([[[obj valueForKey:@"category"] lowercaseString] isEqualToString:@"бизнес-центры"]) {
+                [self.currentStores addObject:obj];
+                [insertIndexPaths addObject:[NSIndexPath indexPathForRow:cnt inSection:0]];
+                cnt++;
+            }
+        }
+        
+    }
+    else if([title isEqualToString:@"Park"]){
+        category = @"парки";
+        NSLog(@"P");
+        for (int i = 0; i < [self.currentStores count]; i++) {
+            [deleteIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+
+        }
+        [self.currentStores removeAllObjects];
+
+        int cnt = 0;
+        for (NSDictionary *obj in stores) {
+            if ([[[obj valueForKey:@"category"] lowercaseString] isEqualToString:@"парки"]) {
+                [self.currentStores addObject:obj];
+                [insertIndexPaths addObject:[NSIndexPath indexPathForRow:cnt inSection:0]];
+                cnt++;
+            }
+        }
+        
+    }
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:deleteIndexPaths withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView insertRowsAtIndexPaths:insertIndexPaths withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -200,8 +285,9 @@ float getDistance(float x1, float y1, float x2, float y2){
     [self.currentStores removeAllObjects];
     NSMutableArray *insertIndexPaths = [[NSMutableArray alloc] init];
     int cnt = 0;
-    for (NSDictionary *obj in shops) {
-        if ([[[obj valueForKey:@"title"] lowercaseString] hasPrefix:[searchText lowercaseString]]) {
+    for (NSDictionary *obj in stores) {
+        if ([[[obj valueForKey:@"title"] lowercaseString] hasPrefix:[searchText lowercaseString]]
+            && [[[obj valueForKey:@"category"] lowercaseString] containsString:category]) {
             [self.currentStores addObject:obj];
             [insertIndexPaths addObject:[NSIndexPath indexPathForRow:cnt inSection:0]];
             cnt++;
@@ -256,7 +342,9 @@ float getDistance(float x1, float y1, float x2, float y2){
 
     [mpView drawImage:img];
     for (NSDictionary *shop in shops) {
-        [mpView drawShop:shop];
+            if ([[shop valueForKey:@"section_id"] intValue] == [[val valueForKey:@"section_id"] intValue] ) {
+            [self.mpView drawShop:shop];
+        }
     }
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
@@ -285,10 +373,10 @@ float getDistance(float x1, float y1, float x2, float y2){
         if(!account_session )
             account_session = @"";
         if([account_session isEqualToString:@""]){
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        AuthController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AuthController"];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            AuthController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AuthController"];
             [self presentViewController:vc animated:YES completion:nil];
-    }
+        }
         else{
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             AccountController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AccountController"];
@@ -304,6 +392,19 @@ float getDistance(float x1, float y1, float x2, float y2){
             [self.mpView clearShops];
             NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getRoute/%@/%@/", [from valueForKey:@"id"], [to valueForKey:@"id"]]]];
             way = [[NSMutableArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil][1]];
+            if([way count] == 0){
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                               message:@"Извините, путь между этими магазинами еще не проложен, наши сотрудники делают все возможное, чтобы исправить эту оплошность"
+                                               preferredStyle:UIAlertControllerStyleAlert];
+
+                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                   handler:^(UIAlertAction * action) {}];
+
+                [alert addAction:defaultAction];
+                [self presentViewController:alert animated:YES completion:nil];
+                way = nil;
+                return;
+            }
             shopsWay = [[NSMutableArray alloc] initWithArray:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil][0]];
             curShop = 0;
             UIImage *img = [[UIImage alloc] initWithData:[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getSectionImage/%@/", [[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"]]]]];
@@ -350,7 +451,9 @@ float getDistance(float x1, float y1, float x2, float y2){
                         self.scrollView.frame.size.height / 2 - img.size.height / 2);
 
                 [mpView drawImage:img];
+                NSLog(@"CUR: %d",[[[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"] intValue]);
                 for (NSDictionary *obj in way) {
+                    NSLog(@"Smth %d", [[obj valueForKey:@"section_id"] intValue] );
                     if ([obj valueForKey:@"section_id"] == [[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"]) {
                         [self.mpView drawShop:obj];
                         [self.mpView drawLine];
