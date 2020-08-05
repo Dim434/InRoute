@@ -368,27 +368,21 @@ float getDistance(float x1, float y1, float x2, float y2){
 //    subview.center = CGPointMake(offsetX, offsetY);
 //}
 
-
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    NSLog(@"%d", item.tag);
-    if (item.tag == 0) {
-        
-    }
-    else if (item.tag == 1){
-        if(!account_session )
-            account_session = @"";
-        if([account_session isEqualToString:@""]){
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            AuthController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AuthController"];
-            [self presentViewController:vc animated:YES completion:nil];
-        }
-        else{
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            AccountController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AccountController"];
-            [self presentViewController:vc animated:YES completion:nil];
-        }
-    }
+- (IBAction)account:(id)sender {
+    if(!account_session )
+               account_session = @"";
+           if([account_session isEqualToString:@""]){
+               UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+               AuthController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AuthController"];
+               [self presentViewController:vc animated:YES completion:nil];
+           }
+           else{
+               UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+               AccountController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AccountController"];
+               [self presentViewController:vc animated:YES completion:nil];
+           }
 }
+
 
 - (IBAction)routeMap:(UIButton *)sender {
     if (from != nil && to != nil) {

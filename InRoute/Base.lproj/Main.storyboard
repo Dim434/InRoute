@@ -35,8 +35,42 @@
                                 <rect key="frame" x="20" y="44" width="168" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rnE-LU-0NU">
+                                <rect key="frame" x="20" y="717" width="327" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="fromSelect:" destination="QMy-Vq-cMr" eventType="touchDown" id="0WO-1Y-4Em"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Куда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ac-C0-juX">
+                                <rect key="frame" x="20" y="785" width="327" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="toFieldSelect:" destination="QMy-Vq-cMr" eventType="touchDown" id="Cj3-bs-TY7"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfm-SG-5f0">
+                                <rect key="frame" x="95" y="96" width="319" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" red="0.55212438109999995" green="0.75230753419999996" blue="0.35285824539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AK8-ui-sTv">
+                                <rect key="frame" x="349" y="43" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                <state key="normal" title="Button" image="person" catalog="system"/>
+                                <connections>
+                                    <action selector="account:" destination="QMy-Vq-cMr" eventType="touchDown" id="4rl-6P-LjE"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctM-Ig-Fru">
-                                <rect key="frame" x="355" y="737" width="39" height="39"/>
+                                <rect key="frame" x="355" y="762" width="39" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" image="location" catalog="system">
@@ -46,45 +80,6 @@
                                     <action selector="routeMap:" destination="QMy-Vq-cMr" eventType="touchDown" id="DSV-pW-EqS"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rnE-LU-0NU">
-                                <rect key="frame" x="20" y="701" width="327" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="fromSelect:" destination="QMy-Vq-cMr" eventType="touchDown" id="0WO-1Y-4Em"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Куда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ac-C0-juX">
-                                <rect key="frame" x="20" y="751" width="327" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="toFieldSelect:" destination="QMy-Vq-cMr" eventType="touchDown" id="Cj3-bs-TY7"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfm-SG-5f0">
-                                <rect key="frame" x="148" y="96" width="266" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <color key="textColor" red="0.55212438109999995" green="0.75230753419999996" blue="0.35285824539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQc-7l-Hxe">
-                                <rect key="frame" x="0.0" y="809" width="414" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Навигатор" image="location.fill" catalog="system" id="dhf-Vf-TRI">
-                                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
-                                    </tabBarItem>
-                                    <tabBarItem tag="1" title="Профиль" image="person.fill" catalog="system" id="DnZ-lk-fcm"/>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="GOo-2x-aCw" id="UR8-hz-vYc"/>
-                                </connections>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GDW-4i-E9L"/>
@@ -96,7 +91,6 @@
                         <outlet property="stepButton" destination="ctM-Ig-Fru" id="fJM-ka-eHn"/>
                         <outlet property="stepLabel" destination="r5N-vt-zE2" id="e3O-qZ-628"/>
                         <outlet property="storeLabel" destination="mfm-SG-5f0" id="4iK-YQ-DJW"/>
-                        <outlet property="tabbar" destination="aQc-7l-Hxe" id="m1U-Lb-aAJ"/>
                         <outlet property="toField" destination="0Ac-C0-juX" id="vyy-3e-L5h"/>
                     </connections>
                 </viewController>
@@ -414,8 +408,7 @@
     <resources>
         <image name="Horisontal_logo.png" width="10500" height="3000"/>
         <image name="location" catalog="system" width="128" height="115"/>
-        <image name="location.fill" catalog="system" width="128" height="115"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="Бизнес-Центр.png" width="255" height="186"/>
         <image name="Парки.png" width="342" height="267"/>
