@@ -54,7 +54,7 @@
 
 @end
 
-@interface AccountController : UIViewController
+@interface AccountController : UIViewController 
 @property (weak, nonatomic) IBOutlet UITextView *emailLabel;
 
 

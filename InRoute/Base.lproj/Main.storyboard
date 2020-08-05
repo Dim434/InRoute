@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vlp-FN-x9o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vlp-FN-x9o">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -171,6 +171,15 @@
                                     <action selector="logout:" destination="EzG-Bx-wVb" eventType="touchDown" id="tDT-2R-Icy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqQ-Zg-njV">
+                                <rect key="frame" x="42" y="811" width="63" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                <state key="normal" title="Button" image="qrcode" catalog="system"/>
+                                <connections>
+                                    <action selector="qrLaunch:" destination="EzG-Bx-wVb" eventType="touchDown" id="GyA-CQ-zKn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="eKV-fO-1Na"/>
@@ -253,63 +262,92 @@
             </objects>
             <point key="canvasLocation" x="-4413" y="-719"/>
         </scene>
-        <!--Search Place Controller-->
+        <!--Выберите магазин-->
         <scene sceneID="efw-4p-Xtb">
             <objects>
-                <viewController restorationIdentifier="SearchPlaceController" storyboardIdentifier="SearchPlaceController" id="UXA-V0-DXz" customClass="SearchPlaceController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="SearchPlaceController" storyboardIdentifier="SearchPlaceController" title="Выберите магазин" id="UXA-V0-DXz" customClass="SearchPlaceController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="69M-RH-OdK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KQQ-aY-6o1" customClass="tableView">
-                                <rect key="frame" x="0.0" y="184" width="414" height="692"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KQQ-aY-6o1" customClass="tableView">
+                                <rect key="frame" x="0.0" y="184" width="414" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCZ-Hf-gdR">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nCZ-Hf-gdR">
                                 <rect key="frame" x="0.0" y="78" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="arB-t2-HjH"/>
+                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="69M-RH-OdK" id="2AO-zu-VIy"/>
                                 </connections>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQx-EH-Pzd">
-                                <rect key="frame" x="20" y="129" width="47" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="University" image="Слой 3.png"/>
-                                <connections>
-                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="Xmc-g8-MTB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Cy-7K-siA">
-                                <rect key="frame" x="133" y="129" width="47" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Shopping Center" image="Слой 2.png"/>
-                                <connections>
-                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="1uY-mb-yMV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjt-Ny-ZcH">
-                                <rect key="frame" x="241" y="129" width="47" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Business Center" image="Бизнес-Центр.png"/>
-                                <connections>
-                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="0ov-oH-tiH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aoj-RV-m1v">
-                                <rect key="frame" x="347" y="129" width="47" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Park" image="Парки.png"/>
-                                <connections>
-                                    <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="PT5-1h-efr"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="8DX-cC-77T">
+                                <rect key="frame" x="16" y="130" width="414.66666666666669" height="54"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQx-EH-Pzd">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="54"/>
+                                        <state key="normal" title="University" image="Слой 3.png"/>
+                                        <connections>
+                                            <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="Xmc-g8-MTB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Cy-7K-siA">
+                                        <rect key="frame" x="111.66666666666666" y="0.0" width="79.666666666666657" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Shopping Center" image="Слой 2.png"/>
+                                        <connections>
+                                            <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="1uY-mb-yMV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjt-Ny-ZcH">
+                                        <rect key="frame" x="223.33333333333334" y="0.0" width="79.666666666666657" height="54"/>
+                                        <state key="normal" title="Business Center" image="Бизнес-Центр.png"/>
+                                        <connections>
+                                            <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="0ov-oH-tiH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aoj-RV-m1v">
+                                        <rect key="frame" x="335" y="0.0" width="79.666666666666686" height="54"/>
+                                        <state key="normal" title="Park" image="Парки.png"/>
+                                        <connections>
+                                            <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="PT5-1h-efr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="W7P-TK-w1P"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите магазин" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uID-bY-tTP">
+                                <rect key="frame" x="8" y="52" width="398" height="21.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8DX-cC-77T" secondAttribute="trailing" constant="16" id="5cQ-eG-Ujd"/>
+                            <constraint firstItem="QbL-dB-J7q" firstAttribute="trailing" secondItem="uID-bY-tTP" secondAttribute="trailing" constant="8" id="DP9-DB-Nwe"/>
+                            <constraint firstItem="KQQ-aY-6o1" firstAttribute="top" secondItem="8DX-cC-77T" secondAttribute="bottom" id="FBm-Wm-hr8"/>
+                            <constraint firstItem="KQQ-aY-6o1" firstAttribute="leading" secondItem="QbL-dB-J7q" secondAttribute="leading" id="Pw2-fN-kdg"/>
+                            <constraint firstItem="nCZ-Hf-gdR" firstAttribute="top" secondItem="QbL-dB-J7q" secondAttribute="top" constant="34" id="QsX-6l-2YH"/>
+                            <constraint firstItem="uID-bY-tTP" firstAttribute="leading" secondItem="QbL-dB-J7q" secondAttribute="leading" constant="8" id="TlV-kI-28v"/>
+                            <constraint firstItem="uID-bY-tTP" firstAttribute="top" secondItem="QbL-dB-J7q" secondAttribute="top" constant="8" id="aTq-vD-qLB"/>
+                            <constraint firstItem="8DX-cC-77T" firstAttribute="top" secondItem="nCZ-Hf-gdR" secondAttribute="bottom" constant="8" id="bsv-Z5-nQp"/>
+                            <constraint firstAttribute="bottom" secondItem="KQQ-aY-6o1" secondAttribute="bottom" id="iFb-Cj-tBY"/>
+                            <constraint firstItem="nCZ-Hf-gdR" firstAttribute="trailing" secondItem="QbL-dB-J7q" secondAttribute="trailing" id="u3N-ye-67I"/>
+                            <constraint firstItem="KQQ-aY-6o1" firstAttribute="trailing" secondItem="QbL-dB-J7q" secondAttribute="trailing" id="ugs-Do-Zte"/>
+                            <constraint firstItem="8DX-cC-77T" firstAttribute="leading" secondItem="69M-RH-OdK" secondAttribute="leading" constant="16" id="vhW-Cz-8Dv"/>
+                            <constraint firstItem="nCZ-Hf-gdR" firstAttribute="leading" secondItem="QbL-dB-J7q" secondAttribute="leading" id="yO1-96-Kpl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QbL-dB-J7q"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="nCZ-Hf-gdR" id="gkn-LS-VzL"/>
                         <outlet property="tableView" destination="KQQ-aY-6o1" id="QOZ-s0-m8a"/>
@@ -333,12 +371,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nrg-mI-FZL">
-                                <rect key="frame" x="77" y="356" width="260" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ud-dt-fu1">
                                 <rect key="frame" x="77" y="421" width="115" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -347,18 +379,24 @@
                                     <action selector="loginButton:" destination="yGk-YZ-Ph5" eventType="touchDown" id="T1c-GD-bMU"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Horisontal_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-qs-uwb">
+                                <rect key="frame" x="59" y="152" width="297" height="126"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-rQ-GC1">
-                                <rect key="frame" x="238" y="424" width="57" height="30"/>
+                                <rect key="frame" x="212" y="421" width="115" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
                                     <action selector="registerButton:" destination="yGk-YZ-Ph5" eventType="touchDown" id="I7L-cy-JZr"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Horisontal_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-qs-uwb">
-                                <rect key="frame" x="59" y="152" width="297" height="126"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nrg-mI-FZL">
+                                <rect key="frame" x="77" y="371" width="260" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="fBU-64-F4n"/>
@@ -378,6 +416,7 @@
         <image name="location" catalog="system" width="128" height="115"/>
         <image name="location.fill" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="Бизнес-Центр.png" width="255" height="186"/>
         <image name="Парки.png" width="342" height="267"/>
         <image name="Слой 2.png" width="319" height="212"/>

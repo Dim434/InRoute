@@ -19,7 +19,37 @@
     // Override point for customization after application launch.
     return YES;
 }
-
+- (NSDictionary *)parseQueryString:(NSString *)query {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:6] ;
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    
+    for (NSString *pair in pairs) {
+        NSArray *elements = [pair componentsSeparatedByString:@"="];
+        NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [dict setObject:val forKey:key];
+    }
+    return dict;
+}
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Геопозиция"
+                                                                   message:[NSString stringWithFormat:@"Вы случайно не в "] preferredStyle:UIAlertControllerStyleAlert];
+    
+    NSLog(@"12322");
+    UIAlertAction* actionCancel = [UIAlertAction actionWithTitle:@"Нет" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction* actionYes= [UIAlertAction actionWithTitle:@"Да" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:actionYes];
+    [alert addAction:actionCancel];
+    
+    return YES;
+}
+- (BOOL)application:(UIApplication *)application
+willFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions{
+    return YES;
+}
 
 #pragma mark - UISceneSession lifecycle
 

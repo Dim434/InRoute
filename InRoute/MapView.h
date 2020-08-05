@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(weak, nonatomic) IBOutlet UIImageView *image;
 @property NSMutableArray *shops;
 @property NSMutableArray *lines;
-
+@property  UIBezierPath *path;
+@property CAShapeLayer *shapeLayer;
+@property UIImageView *man;
 - (void)drawImage:(UIImage *)img;
 
 - (void)drawShop:(NSDictionary *)shop;

@@ -23,10 +23,11 @@
 @implementation MapView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
  */
 - (void)stretchToSuperView:(UIView *)view {
+
     view.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
     NSString *formatTemplate = @"%@:|[view]|";
@@ -35,7 +36,7 @@
         NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:bindings];
         [view.superview addConstraints:constraints];
     }
-
+    
 }
 
 - (void)drawImage:(UIImage *)img {
@@ -52,7 +53,7 @@
     [self addSubview:image];
     NSLog(@"%@",[self.lines count]);
     for (CAShapeLayer *layer in self.lines) {
-            [layer removeFromSuperlayer];
+        [layer removeFromSuperlayer];
         NSLog(@"Not drawing");
     }
     self.lines = [[NSMutableArray alloc] init];
@@ -65,35 +66,64 @@
     [self.shops removeAllObjects];
     NSLog(@"%d", 10);
     for (CAShapeLayer *layer in self.lines) {
-            [layer removeFromSuperlayer];
+        [layer removeFromSuperlayer];
         NSLog(@"Not drawing");
     }
     [self.lines removeAllObjects];
+    self.path = nil;
+    self.shapeLayer = nil;
 }
 
 - (void)drawShop:(NSDictionary *)shop {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([[shop valueForKey:@"pos_x"] intValue] + self.image.frame.origin.x, [[shop valueForKey:@"pos_y"] intValue] + self.image.frame.origin.y, 16, 16)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([[shop valueForKey:@"pos_x"] intValue] + self.image.frame.origin.x, [[shop valueForKey:@"pos_y"] intValue] + self.image.frame.origin.y - 12, 16, 24)];
+    if([[shop valueForKey:@"image_id"] class] == [NSNull class]){
     [imageView setImage:[UIImage imageNamed:[NSString stringWithString:@"pointer.png"]]];
+    }
+    else{
+        UIImage *img = [[UIImage alloc] initWithData:[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getShopImage/%d/", [[shop valueForKey:@"image_id"] intValue]]]]];
+        [imageView setImage:img];
+    }
     [self addSubview:imageView];
     if (!self.shops) self.shops = [[NSMutableArray alloc] init];
     [self.shops addObject:imageView];
-
+    
 }
 - (void)drawLine{
+    if(!self.path){
+        self.path = [UIBezierPath bezierPath];
+        self.shapeLayer = [CAShapeLayer layer];
+        [self.layer addSublayer:self.shapeLayer];
+        [self.lines addObject:self.shapeLayer];
+    }
     if([self.shops count] >= 2){
-        UIBezierPath *path = [UIBezierPath bezierPath];
         UIImageView * shoplast = [self.shops lastObject];
         UIImageView * shopPreLast = [self.shops objectAtIndex:([self.shops count] - 2)];
+        UIImageView * firstView = [self.shops firstObject];
+        if([self.shops count] == 2){
+            self.man = [[UIImageView alloc] initWithFrame:CGRectMake(0,   0, 24, 24)];
+            [self.man setImage:[UIImage imageNamed:[NSString stringWithString:@"icons8-ходьба-48.png"]] ];
+            [self addSubview:self.man];
+        }
         
-        [path moveToPoint:shoplast.center];
-        [path addLineToPoint:shopPreLast.center];
-        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-        shapeLayer.path = [path CGPath];
-        shapeLayer.strokeColor = [[UIColor greenColor] CGColor];
-        shapeLayer.lineWidth = 3.0;
-        shapeLayer.fillColor = [[UIColor clearColor] CGColor];
-        [self.layer addSublayer:shapeLayer];
-        [self.lines addObject:shapeLayer];
+        
+        [self.path moveToPoint:shoplast.center];
+        [self.path addLineToPoint:shopPreLast.center];
+        self.shapeLayer.path = [self.path CGPath];
+        self.shapeLayer.strokeColor = [[UIColor colorWithRed:141.0f/255.0f green:191.0f/255.0f blue:90.0f/255.0f alpha:1.0f] CGColor];
+        self.shapeLayer.lineWidth = 3.0;
+        self.shapeLayer.fillColor = [[UIColor colorWithRed:141.0f/255.0f green:191.0f/255.0f blue:90.0f/255.0f alpha:1.0f] CGColor];
+        self.shapeLayer.lineDashPattern = @[@5, @2];
+        
+        CAKeyframeAnimation *orbit = [CAKeyframeAnimation animation];
+        orbit.keyPath = @"position";
+        orbit.path = [[self.path bezierPathByReversingPath] CGPath];
+        orbit.duration = 4;
+        orbit.additive = NO;
+        orbit.repeatCount = HUGE_VALF;
+        orbit.calculationMode = kCAAnimationPaced;
+        orbit.rotationMode = nil;
+        
+        [self.man.layer addAnimation:orbit forKey:@"orbit"];
         NSLog(@"drawing");
     }
 }
