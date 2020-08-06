@@ -607,12 +607,41 @@ float getDistance(float x1, float y1, float x2, float y2){
     NSLog(@"loaded");
     [super viewDidLoad];
 }
+- (BOOL)validateEmailWithString:(NSString*)email
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
 - (IBAction)loginButton:(id)sender {
     [self.view endEditing:YES];
     __block bool dismisss = false;
     NSString * email = self.emailField.text;
     NSString * password = self.passwordField.text;
-    
+    if(password.length < 8){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                       message:@"В пароле меньше 8 символов"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+         
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+         
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if(![self validateEmailWithString:email]){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                       message:@"Не правильно введен email"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+         
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+         
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/login/"]];
     
     NSString *userUpdate =[NSString stringWithFormat:@"email=%@&password=%@",email,password, nil];
@@ -679,7 +708,30 @@ float getDistance(float x1, float y1, float x2, float y2){
     __block bool dismisss = false;
     NSString * email = self.emailField.text;
     NSString * password = self.passwordField.text;
-    
+    if(password.length < 8){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                       message:@"В пароле меньше 8 символов"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+         
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+         
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if(![self validateEmailWithString:email]){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                       message:@"Не правильно введен email"
+                                       preferredStyle:UIAlertControllerStyleAlert];
+         
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+         
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/register/"]];
     
     NSString *userUpdate =[NSString stringWithFormat:@"email=%@&password=%@",email,password, nil];
