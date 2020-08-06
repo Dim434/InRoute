@@ -36,7 +36,7 @@ float getDistance(float x1, float y1, float x2, float y2){
 @end
 
 @interface ViewController ()
-
+- (void)initMapData;
 @end
 
 @interface SearchController ()
@@ -91,13 +91,14 @@ float getDistance(float x1, float y1, float x2, float y2){
     self.locationManager.delegate = self;
     
     [self.locationManager requestWhenInUseAuthorization];
-
+    
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
     NSDictionary *point = [self getNearest];
     NSLog(@"233");
     [self.textField setText:[point valueForKey:@"title"]];
+    curStore = [[point valueForKey:@"id"] intValue];
     [self.locationManager stopUpdatingLocation];
     
 }
@@ -262,12 +263,19 @@ float getDistance(float x1, float y1, float x2, float y2){
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     self.returnedData = [self.currentStores objectAtIndex:indexPath.row];
     curStore = [[[self.currentStores objectAtIndex:indexPath.row] valueForKey:@"id"] intValue];
+    storeName = [[self.currentStores objectAtIndex:indexPath.row] valueForKey:@"title"];
     InitViewController *vc = (InitViewController *) self.presentingViewController.childViewControllers.firstObject;
+    if(self.delegate != nil){
+        [self.delegate initMapData];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:^void {
+            [vc.textField setText:[[self.currentStores objectAtIndex:indexPath.row] valueForKey:@"title"]];
+            
+        }];
     
-    [self dismissViewControllerAnimated:YES completion:^void {
-        [vc.textField setText:[[self.currentStores objectAtIndex:indexPath.row] valueForKey:@"title"]];
-    }];
     
+    }
 }
 
 - (void)searchBar:(UISearchBar *_Nonnull)searchBar textDidChange:(NSString *_Nonnull)searchText {
@@ -306,11 +314,9 @@ float getDistance(float x1, float y1, float x2, float y2){
     shops = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (void)initMapData {
     [self initData];
-    [self.storeLabel setText:storeName];
+    [self.storeLabel setTitle:storeName forState:UIControlStateNormal];
     self.stepButton.layer.cornerRadius = 38 / 2.0f;
     [self.stepButton.layer setShadowOffset:CGSizeMake(5, 5)];
     [self.stepButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
@@ -321,6 +327,10 @@ float getDistance(float x1, float y1, float x2, float y2){
     UIImage *img = [[UIImage alloc] initWithData:[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getSectionImage/%d/", [[val valueForKey:@"section_id"] intValue]]]]];
     NSLog(@"%@", [NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getSectionImage/%d/", [[val valueForKey:@"section_id"] intValue] ]);
     MapView *mpView = [[MapView alloc] init];
+    if(self.mpView){
+        [self.mpView clearShops];
+        [self.mpView clearImage];
+    }
     self.mpView = mpView;
     self.mpView.frame = CGRectMake(0, 0, MAX(self.scrollView.frame.size.width, img.size.width), MAX(self.scrollView.frame.size.height, img.size.height));
     
@@ -349,12 +359,27 @@ float getDistance(float x1, float y1, float x2, float y2){
     self.scrollView.delegate = self;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self initMapData];
+}
+
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.mpView;
 }
 
 - (UIView *)viewForZooming:(UIScrollView *)scrollView {
     return self.mpView;
+}
+- (IBAction)changePlace:(id)sender {
+    NSString *storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    SearchPlaceController *vc = [storyboard instantiateViewControllerWithIdentifier:@"SearchPlaceController"];
+    // [self addChildViewController:vc];
+    vc.delegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
+    
 }
 
 //- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
@@ -370,17 +395,17 @@ float getDistance(float x1, float y1, float x2, float y2){
 
 - (IBAction)account:(id)sender {
     if(!account_session )
-               account_session = @"";
-           if([account_session isEqualToString:@""]){
-               UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-               AuthController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AuthController"];
-               [self presentViewController:vc animated:YES completion:nil];
-           }
-           else{
-               UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-               AccountController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AccountController"];
-               [self presentViewController:vc animated:YES completion:nil];
-           }
+        account_session = @"";
+    if([account_session isEqualToString:@""]){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        AuthController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AuthController"];
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    else{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        AccountController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AccountController"];
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 
@@ -511,6 +536,8 @@ float getDistance(float x1, float y1, float x2, float y2){
     self.searchBar.delegate = self;
     self.tableView.dataSource = self;
     self.currentShops = [[NSMutableArray alloc] initWithArray:shops];
+    self.tableView.tableFooterView = [UIView new];
+    
     
 }
 

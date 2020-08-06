@@ -35,6 +35,17 @@
                                 <rect key="frame" x="20" y="44" width="168" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctM-Ig-Fru">
+                                <rect key="frame" x="355" y="737" width="39" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" image="location" catalog="system">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="routeMap:" destination="QMy-Vq-cMr" eventType="touchDown" id="DSV-pW-EqS"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Откуда" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rnE-LU-0NU">
                                 <rect key="frame" x="20" y="717" width="327" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -53,13 +64,6 @@
                                     <action selector="toFieldSelect:" destination="QMy-Vq-cMr" eventType="touchDown" id="Cj3-bs-TY7"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfm-SG-5f0">
-                                <rect key="frame" x="95" y="96" width="319" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <color key="textColor" red="0.55212438109999995" green="0.75230753419999996" blue="0.35285824539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AK8-ui-sTv">
                                 <rect key="frame" x="349" y="43" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -69,15 +73,15 @@
                                     <action selector="account:" destination="QMy-Vq-cMr" eventType="touchDown" id="4rl-6P-LjE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctM-Ig-Fru">
-                                <rect key="frame" x="355" y="762" width="39" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" image="location" catalog="system">
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7f-We-W0E">
+                                <rect key="frame" x="95" y="96" width="319" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <state key="normal" title="Label">
+                                    <color key="titleColor" red="0.55212438109999995" green="0.75230753419999996" blue="0.35285824539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="routeMap:" destination="QMy-Vq-cMr" eventType="touchDown" id="DSV-pW-EqS"/>
+                                    <action selector="changePlace:" destination="QMy-Vq-cMr" eventType="touchDown" id="QGj-ms-Qsx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -90,7 +94,7 @@
                         <outlet property="scrollView" destination="dIk-xm-sAh" id="0eP-4t-qJQ"/>
                         <outlet property="stepButton" destination="ctM-Ig-Fru" id="fJM-ka-eHn"/>
                         <outlet property="stepLabel" destination="r5N-vt-zE2" id="e3O-qZ-628"/>
-                        <outlet property="storeLabel" destination="mfm-SG-5f0" id="4iK-YQ-DJW"/>
+                        <outlet property="storeLabel" destination="F7f-We-W0E" id="Fks-zb-Vly"/>
                         <outlet property="toField" destination="0Ac-C0-juX" id="vyy-3e-L5h"/>
                     </connections>
                 </viewController>
@@ -282,7 +286,7 @@
                                 <rect key="frame" x="16" y="130" width="414.66666666666669" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQx-EH-Pzd">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="54"/>
                                         <state key="normal" title="University" image="Слой 3.png"/>
                                         <connections>
                                             <action selector="categorySelect:" destination="UXA-V0-DXz" eventType="touchDown" id="Xmc-g8-MTB"/>

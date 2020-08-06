@@ -14,12 +14,18 @@
 - (void)selectedData:(NSDictionary *)selected;
  
 @end
+@protocol ShopViewControllerProtocol <NSObject>
+
+@required
+- (void)initMapData;
+@end
 
 @interface SearchPlaceController : UIViewController 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *currentStores;
 @property NSDictionary *returnedData;
+@property (assign, nonatomic) id<ShopViewControllerProtocol> delegate;
 @end
 
 @interface InitViewController : UIViewController <CLLocationManagerDelegate, UIGestureRecognizerDelegate>
@@ -28,7 +34,7 @@
 @property (nonatomic,retain) CLLocationManager *locationManager;
 @end
 
-@interface ViewController : UIViewController <UIScrollViewDelegate, SearchControllerProtocol, UIGestureRecognizerDelegate>
+@interface ViewController : UIViewController <UIScrollViewDelegate, SearchControllerProtocol, ShopViewControllerProtocol, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITabBar *tabbar;
 @property (weak, nonatomic) IBOutlet MapView *mpView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -36,7 +42,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *toField;
 @property (weak, nonatomic) IBOutlet UIButton *stepButton;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
-@property (weak, nonatomic) IBOutlet UILabel *storeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *storeLabel;
 
 
 @end

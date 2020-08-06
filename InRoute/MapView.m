@@ -27,7 +27,7 @@
  // An empty implementation adversely affects performance during animation.
  */
 - (void)stretchToSuperView:(UIView *)view {
-
+    
     view.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *bindings = NSDictionaryOfVariableBindings(view);
     NSString *formatTemplate = @"%@:|[view]|";
@@ -51,7 +51,7 @@
     self.image = image;
     image.frame = CGRectMake(self.frame.origin.x,[UIScreen mainScreen].bounds.size.height / 3, img.size.width, img.size.height);
     [self addSubview:image];
-    NSLog(@"%@",[self.lines count]);
+    NSLog(@"%lu",(unsigned long)[self.lines count]);
     for (CAShapeLayer *layer in self.lines) {
         [layer removeFromSuperlayer];
         NSLog(@"Not drawing");
@@ -73,11 +73,18 @@
     self.path = nil;
     self.shapeLayer = nil;
 }
+- (void)clearImage{
+    @autoreleasepool {
+        
+        [self.image removeFromSuperview];
+        self.image = nil;
+    }
+}
 
 - (void)drawShop:(NSDictionary *)shop {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake([[shop valueForKey:@"pos_x"] intValue] + self.image.frame.origin.x, [[shop valueForKey:@"pos_y"] intValue] + self.image.frame.origin.y - 12, 16, 24)];
     if([[shop valueForKey:@"image_id"] class] == [NSNull class]){
-    [imageView setImage:[UIImage imageNamed:[NSString stringWithString:@"pointer.png"]]];
+        [imageView setImage:[UIImage imageNamed:@"pointer.png"]];
     }
     else{
         UIImage *img = [[UIImage alloc] initWithData:[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getShopImage/%d/", [[shop valueForKey:@"image_id"] intValue]]]]];
@@ -101,7 +108,7 @@
         UIImageView * firstView = [self.shops firstObject];
         if([self.shops count] == 2){
             self.man = [[UIImageView alloc] initWithFrame:CGRectMake(0,   0, 24, 24)];
-            [self.man setImage:[UIImage imageNamed:[NSString stringWithString:@"icons8-ходьба-48.png"]] ];
+            [self.man setImage:[UIImage imageNamed:@"icons8-ходьба-48.png"] ];
             [self addSubview:self.man];
         }
         

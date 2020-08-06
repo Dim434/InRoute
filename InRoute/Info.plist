@@ -38,6 +38,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Used to scan QR codes</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Используется для определния ближайшего магазина</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -76,8 +78,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Используется для определния ближайшего магазина</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 </dict>
