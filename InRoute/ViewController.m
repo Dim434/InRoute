@@ -87,10 +87,10 @@ float getDistance(float x1, float y1, float x2, float y2){
     [super viewDidLoad];
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
     [center requestAuthorizationWithOptions:
-             (UNAuthorizationOptionAlert +
-              UNAuthorizationOptionSound)
-       completionHandler:^(BOOL granted, NSError * _Nullable error) {
-          // Enable or disable features based on authorization.
+     (UNAuthorizationOptionAlert +
+      UNAuthorizationOptionSound)
+                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        // Enable or disable features based on authorization.
     }];
     self.routeButton.layer.cornerRadius = 5;
     self.routeButton.clipsToBounds = YES;
@@ -282,8 +282,8 @@ float getDistance(float x1, float y1, float x2, float y2){
             [vc.textField setText:[[self.currentStores objectAtIndex:indexPath.row] valueForKey:@"title"]];
             
         }];
-    
-    
+        
+        
     }
 }
 
@@ -325,6 +325,10 @@ float getDistance(float x1, float y1, float x2, float y2){
 
 - (void)initMapData {
     [self initData];
+    [self.fromField setText:@""];
+    [self.toField setText:@""];
+    from= nil;
+    to=nil;
     [self.storeLabel setTitle:storeName forState:UIControlStateNormal];
     self.stepButton.layer.cornerRadius = 38 / 2.0f;
     [self.stepButton.layer setShadowOffset:CGSizeMake(5, 5)];
@@ -629,24 +633,24 @@ float getDistance(float x1, float y1, float x2, float y2){
     NSString * password = self.passwordField.text;
     if(password.length < 8){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
-                                       message:@"В пароле меньше 8 символов"
-                                       preferredStyle:UIAlertControllerStyleAlert];
-         
+                                                                       message:@"В пароле меньше 8 символов"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-           handler:^(UIAlertAction * action) {}];
-         
+                                                              handler:^(UIAlertAction * action) {}];
+        
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
     if(![self validateEmailWithString:email]){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
-                                       message:@"Не правильно введен email"
-                                       preferredStyle:UIAlertControllerStyleAlert];
-         
+                                                                       message:@"Не правильно введен email"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-           handler:^(UIAlertAction * action) {}];
-         
+                                                              handler:^(UIAlertAction * action) {}];
+        
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
         return;
@@ -719,24 +723,24 @@ float getDistance(float x1, float y1, float x2, float y2){
     NSString * password = self.passwordField.text;
     if(password.length < 8){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
-                                       message:@"В пароле меньше 8 символов"
-                                       preferredStyle:UIAlertControllerStyleAlert];
-         
+                                                                       message:@"В пароле меньше 8 символов"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-           handler:^(UIAlertAction * action) {}];
-         
+                                                              handler:^(UIAlertAction * action) {}];
+        
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
         return;
     }
     if(![self validateEmailWithString:email]){
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
-                                       message:@"Не правильно введен email"
-                                       preferredStyle:UIAlertControllerStyleAlert];
-         
+                                                                       message:@"Не правильно введен email"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-           handler:^(UIAlertAction * action) {}];
-         
+                                                              handler:^(UIAlertAction * action) {}];
+        
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
         return;
