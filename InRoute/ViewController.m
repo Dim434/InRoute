@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MapView.h"
 #import "QRCodeReaderViewController.h"
+#import "UserNotifications/UserNotifications.h"
 NSArray *shops;
 
 NSDictionary *from, *to;
@@ -54,6 +55,7 @@ float getDistance(float x1, float y1, float x2, float y2){
 @implementation InitViewController
 
 - (NSDictionary *)getNearest{
+    
     id data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/getListOfStores/"]];
     NSLog(@"ffff");
     stores = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -83,6 +85,13 @@ float getDistance(float x1, float y1, float x2, float y2){
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:
+             (UNAuthorizationOptionAlert +
+              UNAuthorizationOptionSound)
+       completionHandler:^(BOOL granted, NSError * _Nullable error) {
+          // Enable or disable features based on authorization.
+    }];
     self.routeButton.layer.cornerRadius = 5;
     self.routeButton.clipsToBounds = YES;
     [[self navigationController] setNavigationBarHidden:YES animated:YES];

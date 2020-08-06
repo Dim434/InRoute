@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "UserNotifications/UserNotifications.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,37 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+      // Register for remote notifications.
+       [[UIApplication sharedApplication] registerForRemoteNotifications];
+
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+
+
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert +UNAuthorizationOptionSound;
+
     // Override point for customization after application launch.
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+
+    content.title = @"Пошли в торговый центр";
+
+    content.subtitle = @"";
+
+    content.body = @"Еще не прокладывал маршрут? Самое время!";
+
+    content.sound = [UNNotificationSound defaultSound];
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:60*60*24      repeats:YES];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"UYLLocalNotification" content:content      trigger:trigger];
+
+    // add notification for current notification centre
+    if([[NSUserDefaults standardUserDefaults] valueForKey:@"notifications"]){
+    }
+    else{
+        NSString *test = @"true";
+        [[NSUserDefaults standardUserDefaults] setValue:test forKey:@"notifications"];
+        [center addNotificationRequest:request withCompletionHandler:nil];
+    }
+    
     return YES;
 }
 - (NSDictionary *)parseQueryString:(NSString *)query {
