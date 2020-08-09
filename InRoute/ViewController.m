@@ -619,6 +619,88 @@ float getDistance(float x1, float y1, float x2, float y2){
 - (void)viewDidLoad{
     NSLog(@"loaded");
     [super viewDidLoad];
+    [self.appleButton initWithAuthorizationButtonType:ASAuthorizationAppleIDButtonTypeDefault authorizationButtonStyle:ASAuthorizationAppleIDButtonStyleBlack];
+}
+
+- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization{
+    
+    if([authorization.credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]){
+        ASAuthorizationAppleIDCredential *creds = authorization.credential;
+        NSLog(@"%@", creds.user);
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://g4play.ru/api/v0.2/appleSign/"]];
+        
+        NSString *userUpdate =[NSString stringWithFormat:@"userID=%@", creds.user, nil];
+        
+        //create the Method "GET" or "POST"
+        
+        //Convert the String to Data
+        
+        //Apply the data to the body
+        [request setHTTPMethod:@"POST"];
+        
+        //Pass The String to server(YOU SHOULD GIVE YOUR PARAMETERS INSTEAD OF MY PARAMETERS)
+        
+        //Check The Value what we passed
+        NSLog(@"the data Details is =%@", userUpdate);
+        
+        //Convert the String to Data
+        NSData *data1 = [userUpdate dataUsingEncoding:NSUTF8StringEncoding];
+        
+        //Apply the data to the body
+        [request setHTTPBody:data1];
+        
+        //Create the response and Error
+        NSError *err;
+        NSURLResponse *response;
+        
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
+        
+        NSDictionary *res = [[NSDictionary alloc] initWithDictionary:[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil]];
+        
+        //This is for Response
+        NSLog(@"got response==%@", res);
+        if(res && [res objectForKey:@"key"])
+        {
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setObject:[res objectForKey:@"key"] forKey:@"session_inroute"];
+            [prefs setObject:creds.user forKey:@"email_inroute"];
+            account_session = [res objectForKey:@"key"];
+            account_email = creds.user;
+            NSLog(@"%@", account_email);
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else
+        {
+            NSLog(@"Error");
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                           message:@"Ошибка авторизации"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+            
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+    else{
+        NSLog(@"we fucked up");
+    }
+}
+- (IBAction)touchDown:(id)sender {
+    __auto_type req = [[ASAuthorizationAppleIDProvider new] createRequest];
+    req.requestedScopes = @[ASAuthorizationScopeEmail, ASAuthorizationScopeFullName];
+    __auto_type controller = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[req]];
+    controller.delegate = self;
+    controller.presentationContextProvider = self;
+    [controller performRequests];
+}
+- (ASPresentationAnchor)presentationAnchor:(ASPresentationAnchor *)controller{
+    return (UIWindow *)self.view.window;
 }
 - (BOOL)validateEmailWithString:(NSString*)email
 {
@@ -805,6 +887,9 @@ float getDistance(float x1, float y1, float x2, float y2){
         [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+
+
 @end
 
 @implementation AccountController

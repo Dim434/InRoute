@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "MapView.h"
 #import <CoreLocation/CoreLocation.h>
+@import AuthenticationServices;
+
 @protocol SearchControllerProtocol <NSObject>
 @required
 - (void)selectedData:(NSDictionary *)selected;
@@ -54,7 +56,10 @@
 @property NSMutableArray *currentShops;
 @property (weak, nonatomic) id<SearchControllerProtocol> delegate;
 @end
-@interface AuthController : UIViewController
+
+
+@interface AuthController : UIViewController <ASAuthorizationControllerDelegate>
+@property (weak, nonatomic) IBOutlet ASAuthorizationAppleIDButton *appleButton;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
