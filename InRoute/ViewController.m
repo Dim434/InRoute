@@ -351,13 +351,13 @@ float getDistance(float x1, float y1, float x2, float y2){
     double scaleF = self.scrollView.frame.size.width / img.size.width;
     
     NSLog(@"Float: %f, %f, %f", scaleF, img.size.width, img.size.height);
-    self.mpView.frame = CGRectMake(0, 0, img.size.width, img.size.height);
-    self.mpView.center = CGPointMake(self.scrollView.frame.size.width / 2,
-                                     self.scrollView.frame.size.height / 2 - img.size.height / 2);
-    
-    self.mpView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleF, scaleF);
+
+   
     
     [mpView drawImage:img];
+    _mpView.frame = _mpView.image.frame;
+    
+    
     for (NSDictionary *shop in shops) {
         if ([[shop valueForKey:@"section_id"] intValue] == [[val valueForKey:@"section_id"] intValue] ) {
             [self.mpView drawShop:shop];
@@ -368,7 +368,8 @@ float getDistance(float x1, float y1, float x2, float y2){
     [self.scrollView setScrollEnabled:YES];
     [self.scrollView setClipsToBounds:YES];
     self.scrollView.minimumZoomScale = scaleF;
-    self.scrollView.maximumZoomScale = 5.0;
+    self.scrollView.maximumZoomScale = 4.0;
+    self.scrollView.zoomScale = scaleF;
     self.scrollView.delegate = self;
 }
 
