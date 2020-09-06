@@ -21,6 +21,14 @@
 @required
 - (void)initMapData;
 @end
+@interface MyScrollView : UIScrollView
+@property (nonatomic) double scaleF;
+@property (nonatomic) MapView *mpView;
+
+- (CGRect)zoomRect:(CGFloat)scale center:(CGPoint)center;
+- (void)handleDoubleTap:(UITapGestureRecognizer *)gestureRecognizer;
+
+@end
 
 @interface SearchPlaceController : UIViewController 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -39,13 +47,13 @@
 @interface ViewController : UIViewController <UIScrollViewDelegate, SearchControllerProtocol, ShopViewControllerProtocol, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITabBar *tabbar;
 @property (weak, nonatomic) IBOutlet MapView *mpView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet MyScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextField *fromField;
 @property (weak, nonatomic) IBOutlet UITextField *toField;
 @property (weak, nonatomic) IBOutlet UIButton *stepButton;
 @property (weak, nonatomic) IBOutlet UILabel *stepLabel;
 @property (weak, nonatomic) IBOutlet UIButton *storeLabel;
-
+@property double scaleF;
 
 @end
 

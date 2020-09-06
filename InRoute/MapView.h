@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)stretchToSuperView:(UIView *)view;
 - (void)clearImage;
 - (void)clearShops;
-
 - (void)drawLine;
 @end
 

@@ -38,6 +38,7 @@ float getDistance(float x1, float y1, float x2, float y2){
 
 @interface ViewController ()
 - (void)initMapData;
+
 @end
 
 @interface SearchController ()
@@ -52,6 +53,44 @@ float getDistance(float x1, float y1, float x2, float y2){
 
 @end
 
+@interface MyScrollView ()
+- (CGRect)zoomRect:(CGFloat)scale center:(CGPoint)center;
+- (void)handleDoubleTap:(UITapGestureRecognizer *)gestureRecognizer;
+
+@end
+@implementation MyScrollView
+
+- (CGRect)zoomRect:(CGFloat)scale center:(CGPoint)center{
+    __auto_type zoomRect = CGRectZero;
+    zoomRect.size.height = _mpView.frame.size.height / scale;
+    zoomRect.size.width = _mpView.frame.size.width / scale;
+    __auto_type newCenter = [self convertPoint:center toView:_mpView];
+    zoomRect.origin.x = newCenter.x - (zoomRect.size.width / 2.0);
+    zoomRect.origin.y = newCenter.y - (zoomRect.size.height / 2.0) + 100;
+    return zoomRect;
+    
+}
+- (void)setMpView:(MapView *)mpView{
+    _mpView = mpView;
+}
+- (void)setScaleF:(double)scaleF{
+    _scaleF = scaleF;
+}
+- (void)handleDoubleTap:(UITapGestureRecognizer *)gestureRecognizer{
+    if(self.zoomScale == self->_scaleF){
+        __auto_type tapPoint = [gestureRecognizer locationInView:gestureRecognizer.view];
+        __auto_type rect = [self zoomRect:4.0 center:tapPoint];
+        [self zoomToRect:rect animated:YES];
+    }
+    else{
+        self.zoomScale = self->_scaleF;
+        
+    }
+}
+
+@synthesize visibleSize;
+
+@end
 @implementation InitViewController
 
 - (NSDictionary *)getNearest{
@@ -334,7 +373,6 @@ float getDistance(float x1, float y1, float x2, float y2){
     [self.stepButton.layer setShadowOffset:CGSizeMake(5, 5)];
     [self.stepButton.layer setShadowColor:[[UIColor blackColor] CGColor]];
     [self.stepButton.layer setShadowOpacity:0.5];
-    self.tabbar.delegate = self;
     NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getListOfShops/%d/", curStore]]];
     NSDictionary *val = [[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil] objectAtIndex:0];
     UIImage *img = [[UIImage alloc] initWithData:[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getSectionImage/%d/", [[val valueForKey:@"section_id"] intValue]]]]];
@@ -356,13 +394,15 @@ float getDistance(float x1, float y1, float x2, float y2){
     
     [mpView drawImage:img];
     _mpView.frame = _mpView.image.frame;
-    
+    [_scrollView setScaleF:scaleF];
+    [_scrollView setMpView:mpView];
     
     for (NSDictionary *shop in shops) {
         if ([[shop valueForKey:@"section_id"] intValue] == [[val valueForKey:@"section_id"] intValue] ) {
             [self.mpView drawShop:shop];
         }
     }
+    self.scaleF = scaleF;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     [self.scrollView setScrollEnabled:YES];
@@ -371,6 +411,9 @@ float getDistance(float x1, float y1, float x2, float y2){
     self.scrollView.maximumZoomScale = 4.0;
     self.scrollView.zoomScale = scaleF;
     self.scrollView.delegate = self;
+    __auto_type tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.scrollView action:@selector(handleDoubleTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 2;
+    [_scrollView addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)viewDidLoad {
@@ -386,6 +429,7 @@ float getDistance(float x1, float y1, float x2, float y2){
 - (UIView *)viewForZooming:(UIScrollView *)scrollView {
     return self.mpView;
 }
+
 - (IBAction)changePlace:(id)sender {
     NSString *storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
@@ -452,17 +496,31 @@ float getDistance(float x1, float y1, float x2, float y2){
             for (UIView *view in self.scrollView.subviews) {
                 [view removeFromSuperview];
             }
+            self.mpView.frame = CGRectMake(0, 0, MAX(self.scrollView.frame.size.width, img.size.width), MAX(self.scrollView.frame.size.height, img.size.height));
+            
             [self.scrollView addSubview:mpView];
             double scaleF = self.scrollView.frame.size.width / img.size.width;
-            NSLog(@"%f", scaleF);
-            self.mpView.frame = CGRectMake(0, 0, img.size.width, img.size.height);
-            self.mpView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleF, scaleF);
-            self.mpView.center = CGPointMake(self.scrollView.frame.size.width / 2,
-                                             self.scrollView.frame.size.height / 2 - img.size.height / 2);
+            
+            NSLog(@"Float: %f, %f, %f", scaleF, img.size.width, img.size.height);
+
+           
             
             [mpView drawImage:img];
-            for (NSDictionary *obj in shopsWay) {
+            _mpView.frame = _mpView.image.frame;
+            [_scrollView setScaleF:scaleF];
+            [_scrollView setMpView:mpView];
+            self.scaleF = scaleF;
+            self.scrollView.showsVerticalScrollIndicator = NO;
+            self.scrollView.showsHorizontalScrollIndicator = NO;
+            [self.scrollView setScrollEnabled:YES];
+            [self.scrollView setClipsToBounds:YES];
+            self.scrollView.minimumZoomScale = scaleF;
+            self.scrollView.maximumZoomScale = 4.0;
+            self.scrollView.zoomScale = scaleF;
+            self.scrollView.delegate = self;
+            for (NSDictionary* obj in shopsWay) {
                 if ([obj valueForKey:@"section_id"] == [[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"]) {
+                    NSLog(@"%d", [obj valueForKey:@"section_id"]);
                     [self.mpView drawShop:obj];
                     [self.mpView drawLine];
                 }
@@ -477,20 +535,34 @@ float getDistance(float x1, float y1, float x2, float y2){
             if ([[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"] != [[shopsWay objectAtIndex:(curShop - 1)] valueForKey:@"section_id"]) {
                 UIImage *img = [[UIImage alloc] initWithData:[[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://g4play.ru/api/v0.2/getSectionImage/%@/", [[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"]]]]];
                 MapView *mpView = [[MapView alloc] init];
+                [_mpView clearImage];
+                [_mpView clearShops];
+                [_mpView removeFromSuperview];
                 self.mpView = mpView;
                 self.mpView.frame = CGRectMake(0, 0, MAX(self.scrollView.frame.size.width, img.size.width), MAX(self.scrollView.frame.size.height, img.size.height));
                 
                 [self.scrollView addSubview:mpView];
                 double scaleF = self.scrollView.frame.size.width / img.size.width;
-                NSLog(@"%f", scaleF);
-                self.mpView.frame = CGRectMake(0, 0, img.size.width, img.size.height);
-                self.mpView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scaleF, scaleF);
-                self.mpView.center = CGPointMake(self.scrollView.frame.size.width / 2,
-                                                 self.scrollView.frame.size.height / 2 - img.size.height / 2);
+                
+                NSLog(@"Float: %f, %f, %f", scaleF, img.size.width, img.size.height);
+
+               
                 
                 [mpView drawImage:img];
+                _mpView.frame = _mpView.image.frame;
+                [_scrollView setScaleF:scaleF];
+                [_scrollView setMpView:mpView];
+                self.scaleF = scaleF;
+                self.scrollView.showsVerticalScrollIndicator = NO;
+                self.scrollView.showsHorizontalScrollIndicator = NO;
+                [self.scrollView setScrollEnabled:YES];
+                [self.scrollView setClipsToBounds:YES];
+                self.scrollView.minimumZoomScale = scaleF;
+                self.scrollView.maximumZoomScale = 4.0;
+                self.scrollView.zoomScale = scaleF;
+                self.scrollView.delegate = self;
                 NSLog(@"CUR: %d",[[[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"] intValue]);
-                for (NSDictionary *obj in way) {
+                for (NSDictionary *obj in shopsWay) {
                     NSLog(@"Smth %d", [[obj valueForKey:@"section_id"] intValue] );
                     if ([obj valueForKey:@"section_id"] == [[shopsWay objectAtIndex:curShop] valueForKey:@"section_id"]) {
                         [self.mpView drawShop:obj];
@@ -587,7 +659,7 @@ float getDistance(float x1, float y1, float x2, float y2){
     self.returnedData = [self.currentShops objectAtIndex:indexPath.row];
     selected = self.returnedData;
     [self OnDoneBlock];
-    
+    changedData = true;
 }
 
 - (void)searchBar:(UISearchBar *_Nonnull)searchBar textDidChange:(NSString *_Nonnull)searchText {
@@ -664,9 +736,9 @@ float getDistance(float x1, float y1, float x2, float y2){
         {
             NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
             [prefs setObject:[res objectForKey:@"key"] forKey:@"session_inroute"];
-            [prefs setObject:creds.user forKey:@"email_inroute"];
+            [prefs setObject:creds.fullName.givenName forKey:@"email_inroute"];
             account_session = [res objectForKey:@"key"];
-            account_email = creds.user;
+            account_email = creds.fullName.givenName;
             NSLog(@"%@", account_email);
             [self dismissViewControllerAnimated:YES completion:nil];
         }

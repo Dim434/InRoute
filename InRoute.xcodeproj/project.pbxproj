@@ -19,8 +19,8 @@
 		C122E701249AB04000A49062 /* Парки.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E700249AB04000A49062 /* Парки.png */; };
 		C122E703249AB1FE00A49062 /* Бизнес-Центр.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E702249AB1FE00A49062 /* Бизнес-Центр.png */; };
 		C12507D5249B645C007F3195 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = C12507D4249B645C007F3195 /* pointer.png */; };
-		C128788724B90CB000147F0A /* icons8-ходьба-48.png in Resources */ = {isa = PBXBuildFile; fileRef = C128788624B90CB000147F0A /* icons8-ходьба-48.png */; };
 		C15A6229242FF8F10030686E /* init.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C15A6228242FF8F10030686E /* init.jpg */; };
+		C1673F7A25052524009EF670 /* icons8-ходьба-100.png in Resources */ = {isa = PBXBuildFile; fileRef = C1673F7925052524009EF670 /* icons8-ходьба-100.png */; };
 		C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C199C299243D33F200EEDCF6 /* MapView.xib */; };
 		C199C29D243D348400EEDCF6 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = C199C29C243D348400EEDCF6 /* MapView.m */; };
 		C1D0E7DF24DC2AC700D799F5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D0E7DD24DC2AC200D799F5 /* UserNotifications.framework */; };
@@ -50,8 +50,8 @@
 		C122E700249AB04000A49062 /* Парки.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Парки.png"; sourceTree = "<group>"; };
 		C122E702249AB1FE00A49062 /* Бизнес-Центр.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Бизнес-Центр.png"; sourceTree = "<group>"; };
 		C12507D4249B645C007F3195 /* pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pointer.png; path = ../../../Downloads/pointer.png; sourceTree = "<group>"; };
-		C128788624B90CB000147F0A /* icons8-ходьба-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icons8-ходьба-48.png"; path = "../../../../Downloads/icons8-ходьба-48.png"; sourceTree = "<group>"; };
 		C15A6228242FF8F10030686E /* init.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = init.jpg; sourceTree = "<group>"; };
+		C1673F7925052524009EF670 /* icons8-ходьба-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ходьба-100.png"; sourceTree = "<group>"; };
 		C199C299243D33F200EEDCF6 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		C199C29B243D348400EEDCF6 /* MapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		C199C29C243D348400EEDCF6 /* MapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		C199C298243D21A500EEDCF6 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C128788624B90CB000147F0A /* icons8-ходьба-48.png */,
+				C1673F7925052524009EF670 /* icons8-ходьба-100.png */,
 				C122E702249AB1FE00A49062 /* Бизнес-Центр.png */,
 				C122E700249AB04000A49062 /* Парки.png */,
 				C122E6FE24990DF100A49062 /* Слой 2.png */,
@@ -212,6 +212,7 @@
 			files = (
 				84FFFAB6242A94D900B09A4A /* LaunchScreen.storyboard in Resources */,
 				C122E6FD24990D5E00A49062 /* Слой 3.png in Resources */,
+				C1673F7A25052524009EF670 /* icons8-ходьба-100.png in Resources */,
 				C122E6FF24990DF100A49062 /* Слой 2.png in Resources */,
 				84FFFAB3242A94D900B09A4A /* Assets.xcassets in Resources */,
 				C122E703249AB1FE00A49062 /* Бизнес-Центр.png in Resources */,
@@ -219,7 +220,6 @@
 				C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */,
 				84FFFAB1242A94D600B09A4A /* Main.storyboard in Resources */,
 				C15A6229242FF8F10030686E /* init.jpg in Resources */,
-				C128788724B90CB000147F0A /* icons8-ходьба-48.png in Resources */,
 				C1E0C4E924867DE80028CA45 /* Horisontal_logo.png in Resources */,
 				C12507D5249B645C007F3195 /* pointer.png in Resources */,
 			);
@@ -422,7 +422,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = InRoute/InRoute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
 				INFOPLIST_FILE = InRoute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -447,7 +447,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = InRoute/InRoute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
 				INFOPLIST_FILE = InRoute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

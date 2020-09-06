@@ -108,7 +108,7 @@
         UIImageView * firstView = [self.shops firstObject];
         if([self.shops count] == 2){
             self.man = [[UIImageView alloc] initWithFrame:CGRectMake(0,   0, 24, 24)];
-            [self.man setImage:[UIImage imageNamed:@"icons8-ходьба-48.png"] ];
+            [self.man setImage:[UIImage imageNamed:@"icons8-ходьба-100.png"] ];
             [self addSubview:self.man];
         }
         
