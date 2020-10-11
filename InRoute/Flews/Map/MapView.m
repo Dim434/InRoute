@@ -111,16 +111,13 @@
             [self.man setImage:[UIImage imageNamed:@"icons8-ходьба-100.png"] ];
             [self addSubview:self.man];
         }
-        
-        
         [self.path moveToPoint:shoplast.center];
         [self.path addLineToPoint:shopPreLast.center];
         self.shapeLayer.path = [self.path CGPath];
-        self.shapeLayer.strokeColor = [[UIColor colorWithRed:141.0f/255.0f green:191.0f/255.0f blue:90.0f/255.0f alpha:1.0f] CGColor];
+        self.shapeLayer.strokeColor = [UIColor.redColor CGColor];
         self.shapeLayer.lineWidth = 3.0;
-        self.shapeLayer.fillColor = [[UIColor colorWithRed:141.0f/255.0f green:191.0f/255.0f blue:90.0f/255.0f alpha:1.0f] CGColor];
+        self.shapeLayer.fillColor = [UIColor.redColor CGColor];
         self.shapeLayer.lineDashPattern = @[@5, @2];
-        
         CAKeyframeAnimation *orbit = [CAKeyframeAnimation animation];
         orbit.keyPath = @"position";
         orbit.path = [[self.path bezierPathByReversingPath] CGPath];
@@ -135,3 +132,4 @@
     }
 }
 @end
+ 

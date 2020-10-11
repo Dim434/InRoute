@@ -16,28 +16,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-      // Register for remote notifications.
-       [[UIApplication sharedApplication] registerForRemoteNotifications];
-
+    
+    // Register for remote notifications.
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-
-
     UNAuthorizationOptions options = UNAuthorizationOptionAlert +UNAuthorizationOptionSound;
-
     // Override point for customization after application launch.
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-
     content.title = @"Пошли в торговый центр";
-
     content.subtitle = @"";
-
     content.body = @"Еще не прокладывал маршрут? Самое время!";
-
     content.sound = [UNNotificationSound defaultSound];
-    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:60*60*24      repeats:YES];
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:60*60*24 repeats:YES];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"UYLLocalNotification" content:content      trigger:trigger];
-
     // add notification for current notification centre
     if([[NSUserDefaults standardUserDefaults] valueForKey:@"notifications"]){
     }
@@ -46,18 +37,15 @@
         [[NSUserDefaults standardUserDefaults] setValue:test forKey:@"notifications"];
         [center addNotificationRequest:request withCompletionHandler:nil];
     }
-    
     return YES;
 }
 - (NSDictionary *)parseQueryString:(NSString *)query {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:6] ;
     NSArray *pairs = [query componentsSeparatedByString:@"&"];
-    
     for (NSString *pair in pairs) {
         NSArray *elements = [pair componentsSeparatedByString:@"="];
         NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
         [dict setObject:val forKey:key];
     }
     return dict;
@@ -67,13 +55,11 @@
             options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Геопозиция"
                                                                    message:[NSString stringWithFormat:@"Вы случайно не в "] preferredStyle:UIAlertControllerStyleAlert];
-    
     NSLog(@"12322");
     UIAlertAction* actionCancel = [UIAlertAction actionWithTitle:@"Нет" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction* actionYes= [UIAlertAction actionWithTitle:@"Да" style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:actionYes];
     [alert addAction:actionCancel];
-    
     return YES;
 }
 - (BOOL)application:(UIApplication *)application

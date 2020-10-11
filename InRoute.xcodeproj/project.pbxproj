@@ -9,56 +9,69 @@
 /* Begin PBXBuildFile section */
 		84FFFAA8242A94D600B09A4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFAA7242A94D600B09A4A /* AppDelegate.m */; };
 		84FFFAAB242A94D600B09A4A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFAAA242A94D600B09A4A /* SceneDelegate.m */; };
-		84FFFAAE242A94D600B09A4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFAAD242A94D600B09A4A /* ViewController.m */; };
+		84FFFAAE242A94D600B09A4A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFAAD242A94D600B09A4A /* MainViewController.m */; };
 		84FFFAB1242A94D600B09A4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FFFAAF242A94D600B09A4A /* Main.storyboard */; };
-		84FFFAB3242A94D900B09A4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84FFFAB2242A94D900B09A4A /* Assets.xcassets */; };
 		84FFFAB6242A94D900B09A4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FFFAB4242A94D900B09A4A /* LaunchScreen.storyboard */; };
 		84FFFAB9242A94D900B09A4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FFFAB8242A94D900B09A4A /* main.m */; };
-		C122E6FD24990D5E00A49062 /* Слой 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E6FC24990D5E00A49062 /* Слой 3.png */; };
-		C122E6FF24990DF100A49062 /* Слой 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E6FE24990DF100A49062 /* Слой 2.png */; };
-		C122E701249AB04000A49062 /* Парки.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E700249AB04000A49062 /* Парки.png */; };
-		C122E703249AB1FE00A49062 /* Бизнес-Центр.png in Resources */ = {isa = PBXBuildFile; fileRef = C122E702249AB1FE00A49062 /* Бизнес-Центр.png */; };
-		C12507D5249B645C007F3195 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = C12507D4249B645C007F3195 /* pointer.png */; };
-		C15A6229242FF8F10030686E /* init.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C15A6228242FF8F10030686E /* init.jpg */; };
-		C1673F7A25052524009EF670 /* icons8-ходьба-100.png in Resources */ = {isa = PBXBuildFile; fileRef = C1673F7925052524009EF670 /* icons8-ходьба-100.png */; };
+		C1448DC4251BC48D0028BB3F /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1448DC3251BC48D0028BB3F /* SearchController.m */; };
+		C1448DCC251BC6600028BB3F /* AuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1448DCB251BC6600028BB3F /* AuthController.m */; };
+		C1448DD2251BC7930028BB3F /* AccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1448DD1251BC7930028BB3F /* AccountController.m */; };
+		C1448DD8251BC8960028BB3F /* WebController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1448DD7251BC8960028BB3F /* WebController.m */; };
 		C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C199C299243D33F200EEDCF6 /* MapView.xib */; };
 		C199C29D243D348400EEDCF6 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = C199C29C243D348400EEDCF6 /* MapView.m */; };
 		C1D0E7DF24DC2AC700D799F5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D0E7DD24DC2AC200D799F5 /* UserNotifications.framework */; };
 		C1D0E81824DD523200D799F5 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D0E81724DD523200D799F5 /* AuthenticationServices.framework */; };
-		C1E0C4E924867DE80028CA45 /* Horisontal_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E0C4E824867DE80028CA45 /* Horisontal_logo.png */; };
-		F65FC4BAC3BD0CE68286B1D3 /* Pods_InRoute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803C89447A34491EC9ED8932 /* Pods_InRoute.framework */; };
+		C1E7BF802512004900C7A968 /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7BF7F2512004900C7A968 /* Manager.m */; };
+		C1E7BF86251209C000C7A968 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1E7BF85251209C000C7A968 /* Assets.xcassets */; };
+		C1E7BF8C25120A9200C7A968 /* SearchPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7BF8B25120A9200C7A968 /* SearchPlaceViewController.m */; };
+		C1E7BF9025120B7800C7A968 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E7BF8F25120B7800C7A968 /* InitViewController.m */; };
+		C1EDB2F6252231700095CBC0 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDB2F4252231700095CBC0 /* Action.m */; };
+		C1EDB2F7252231700095CBC0 /* Action.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1EDB2F5252231700095CBC0 /* Action.xib */; };
+		C1EDB2FE2522400E0095CBC0 /* StockController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EDB2FD2522400E0095CBC0 /* StockController.m */; };
+		D4FD13C27A72C444D0CDF440 /* Pods_InRoute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A47D84C2010EC8C3E3E5A1C /* Pods_InRoute.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		518DDC11ABD5FE793E20320A /* Pods-InRoute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InRoute.release.xcconfig"; path = "Target Support Files/Pods-InRoute/Pods-InRoute.release.xcconfig"; sourceTree = "<group>"; };
-		803C89447A34491EC9ED8932 /* Pods_InRoute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InRoute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A47D84C2010EC8C3E3E5A1C /* Pods_InRoute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InRoute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0E02975B4678833F061BB3 /* Pods-InRoute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InRoute.release.xcconfig"; path = "Target Support Files/Pods-InRoute/Pods-InRoute.release.xcconfig"; sourceTree = "<group>"; };
 		84FFFAA3242A94D600B09A4A /* InRoute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InRoute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FFFAA6242A94D600B09A4A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84FFFAA7242A94D600B09A4A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84FFFAA9242A94D600B09A4A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		84FFFAAA242A94D600B09A4A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		84FFFAAC242A94D600B09A4A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84FFFAAD242A94D600B09A4A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84FFFAAC242A94D600B09A4A /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		84FFFAAD242A94D600B09A4A /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		84FFFAB0242A94D600B09A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84FFFAB2242A94D900B09A4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84FFFAB5242A94D900B09A4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84FFFAB7242A94D900B09A4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84FFFAB8242A94D900B09A4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8C0B56A7CA337B42F7F739F1 /* Pods-InRoute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InRoute.debug.xcconfig"; path = "Target Support Files/Pods-InRoute/Pods-InRoute.debug.xcconfig"; sourceTree = "<group>"; };
-		C122E6FC24990D5E00A49062 /* Слой 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Слой 3.png"; sourceTree = "<group>"; };
-		C122E6FE24990DF100A49062 /* Слой 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Слой 2.png"; sourceTree = "<group>"; };
-		C122E700249AB04000A49062 /* Парки.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Парки.png"; sourceTree = "<group>"; };
-		C122E702249AB1FE00A49062 /* Бизнес-Центр.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Бизнес-Центр.png"; sourceTree = "<group>"; };
-		C12507D4249B645C007F3195 /* pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pointer.png; path = ../../../Downloads/pointer.png; sourceTree = "<group>"; };
-		C15A6228242FF8F10030686E /* init.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = init.jpg; sourceTree = "<group>"; };
-		C1673F7925052524009EF670 /* icons8-ходьба-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ходьба-100.png"; sourceTree = "<group>"; };
+		861D2BD9313D35F2AB83081E /* Pods-InRoute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InRoute.debug.xcconfig"; path = "Target Support Files/Pods-InRoute/Pods-InRoute.debug.xcconfig"; sourceTree = "<group>"; };
+		C1448DC2251BC48D0028BB3F /* SearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchController.h; sourceTree = "<group>"; };
+		C1448DC3251BC48D0028BB3F /* SearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
+		C1448DCA251BC6600028BB3F /* AuthController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthController.h; sourceTree = "<group>"; };
+		C1448DCB251BC6600028BB3F /* AuthController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthController.m; sourceTree = "<group>"; };
+		C1448DD0251BC7930028BB3F /* AccountController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountController.h; sourceTree = "<group>"; };
+		C1448DD1251BC7930028BB3F /* AccountController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountController.m; sourceTree = "<group>"; };
+		C1448DD6251BC8960028BB3F /* WebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebController.h; sourceTree = "<group>"; };
+		C1448DD7251BC8960028BB3F /* WebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebController.m; sourceTree = "<group>"; };
 		C199C299243D33F200EEDCF6 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		C199C29B243D348400EEDCF6 /* MapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		C199C29C243D348400EEDCF6 /* MapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		C1D0E7DC24DC29D500D799F5 /* InRoute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InRoute.entitlements; sourceTree = "<group>"; };
 		C1D0E7DD24DC2AC200D799F5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		C1D0E81724DD523200D799F5 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
-		C1E0C4E824867DE80028CA45 /* Horisontal_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Horisontal_logo.png; sourceTree = "<group>"; };
+		C1E7BF7E2512004900C7A968 /* Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		C1E7BF7F2512004900C7A968 /* Manager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Manager.m; sourceTree = "<group>"; };
+		C1E7BF85251209C000C7A968 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1E7BF8A25120A9200C7A968 /* SearchPlaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchPlaceViewController.h; sourceTree = "<group>"; };
+		C1E7BF8B25120A9200C7A968 /* SearchPlaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchPlaceViewController.m; sourceTree = "<group>"; };
+		C1E7BF8E25120B7800C7A968 /* InitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitViewController.h; sourceTree = "<group>"; };
+		C1E7BF8F25120B7800C7A968 /* InitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitViewController.m; sourceTree = "<group>"; };
+		C1EDB2F3252231700095CBC0 /* Action.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		C1EDB2F4252231700095CBC0 /* Action.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
+		C1EDB2F5252231700095CBC0 /* Action.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Action.xib; sourceTree = "<group>"; };
+		C1EDB2FC2522400E0095CBC0 /* StockController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockController.h; sourceTree = "<group>"; };
+		C1EDB2FD2522400E0095CBC0 /* StockController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +81,7 @@
 			files = (
 				C1D0E81824DD523200D799F5 /* AuthenticationServices.framework in Frameworks */,
 				C1D0E7DF24DC2AC700D799F5 /* UserNotifications.framework in Frameworks */,
-				F65FC4BAC3BD0CE68286B1D3 /* Pods_InRoute.framework in Frameworks */,
+				D4FD13C27A72C444D0CDF440 /* Pods_InRoute.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,24 +109,12 @@
 		84FFFAA5242A94D600B09A4A /* InRoute */ = {
 			isa = PBXGroup;
 			children = (
+				C1E7BF842512095500C7A968 /* StoryBoards */,
+				C1E7BF7D2512001400C7A968 /* Flews */,
 				C1D0E7DC24DC29D500D799F5 /* InRoute.entitlements */,
-				C12507D4249B645C007F3195 /* pointer.png */,
-				84FFFAA6242A94D600B09A4A /* AppDelegate.h */,
-				84FFFAA7242A94D600B09A4A /* AppDelegate.m */,
 				84FFFAB7242A94D900B09A4A /* Info.plist */,
-				84FFFAB2242A94D900B09A4A /* Assets.xcassets */,
 				84FFFAB8242A94D900B09A4A /* main.m */,
-				C199C298243D21A500EEDCF6 /* src */,
-				84FFFAA9242A94D600B09A4A /* SceneDelegate.h */,
-				84FFFAAA242A94D600B09A4A /* SceneDelegate.m */,
-				84FFFAAC242A94D600B09A4A /* ViewController.h */,
-				84FFFAAD242A94D600B09A4A /* ViewController.m */,
-				C199C29B243D348400EEDCF6 /* MapView.h */,
-				C199C29C243D348400EEDCF6 /* MapView.m */,
-				C15A6228242FF8F10030686E /* init.jpg */,
-				84FFFAAF242A94D600B09A4A /* Main.storyboard */,
-				84FFFAB4242A94D900B09A4A /* LaunchScreen.storyboard */,
-				C199C299243D33F200EEDCF6 /* MapView.xib */,
+				C1E7BF85251209C000C7A968 /* Assets.xcassets */,
 			);
 			path = InRoute;
 			sourceTree = "<group>";
@@ -121,10 +122,20 @@
 		9F5087234DF1B4DA5DC451A1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8C0B56A7CA337B42F7F739F1 /* Pods-InRoute.debug.xcconfig */,
-				518DDC11ABD5FE793E20320A /* Pods-InRoute.release.xcconfig */,
+				861D2BD9313D35F2AB83081E /* Pods-InRoute.debug.xcconfig */,
+				5F0E02975B4678833F061BB3 /* Pods-InRoute.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C11142FE25221FF600A3B72E /* ActionCell */ = {
+			isa = PBXGroup;
+			children = (
+				C1EDB2F3252231700095CBC0 /* Action.h */,
+				C1EDB2F4252231700095CBC0 /* Action.m */,
+				C1EDB2F5252231700095CBC0 /* Action.xib */,
+			);
+			path = ActionCell;
 			sourceTree = "<group>";
 		};
 		C121B2EE24B2036300B416A1 /* Frameworks */ = {
@@ -132,22 +143,147 @@
 			children = (
 				C1D0E81724DD523200D799F5 /* AuthenticationServices.framework */,
 				C1D0E7DD24DC2AC200D799F5 /* UserNotifications.framework */,
-				803C89447A34491EC9ED8932 /* Pods_InRoute.framework */,
+				2A47D84C2010EC8C3E3E5A1C /* Pods_InRoute.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C199C298243D21A500EEDCF6 /* src */ = {
+		C1448DC1251BC4770028BB3F /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				C1673F7925052524009EF670 /* icons8-ходьба-100.png */,
-				C122E702249AB1FE00A49062 /* Бизнес-Центр.png */,
-				C122E700249AB04000A49062 /* Парки.png */,
-				C122E6FE24990DF100A49062 /* Слой 2.png */,
-				C122E6FC24990D5E00A49062 /* Слой 3.png */,
-				C1E0C4E824867DE80028CA45 /* Horisontal_logo.png */,
+				C1448DC2251BC48D0028BB3F /* SearchController.h */,
+				C1448DC3251BC48D0028BB3F /* SearchController.m */,
 			);
-			path = src;
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C1448DC9251BC64B0028BB3F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C1448DCA251BC6600028BB3F /* AuthController.h */,
+				C1448DCB251BC6600028BB3F /* AuthController.m */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C1448DCF251BC7740028BB3F /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C1448DD0251BC7930028BB3F /* AccountController.h */,
+				C1448DD1251BC7930028BB3F /* AccountController.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C1448DD5251BC87F0028BB3F /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				C1448DD6251BC8960028BB3F /* WebController.h */,
+				C1448DD7251BC8960028BB3F /* WebController.m */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		C1E7BF7D2512001400C7A968 /* Flews */ = {
+			isa = PBXGroup;
+			children = (
+				C1E7BF88251209E600C7A968 /* Essentials */,
+				C1E7BF87251209D400C7A968 /* Map */,
+				C1E7BF822512092400C7A968 /* Manager */,
+				C1E7BF812512090A00C7A968 /* ViewControllers */,
+			);
+			path = Flews;
+			sourceTree = "<group>";
+		};
+		C1E7BF812512090A00C7A968 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1EDB2FB25223FED0095CBC0 /* StockController */,
+				C11142FE25221FF600A3B72E /* ActionCell */,
+				C1448DD5251BC87F0028BB3F /* Web */,
+				C1448DCF251BC7740028BB3F /* Account */,
+				C1448DC9251BC64B0028BB3F /* Auth */,
+				C1448DC1251BC4770028BB3F /* Search */,
+				C1E7BF8D25120B6600C7A968 /* InitView */,
+				C1E7BF8925120A6C00C7A968 /* SearchPlace */,
+				C1E7BF832512093200C7A968 /* View */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C1E7BF822512092400C7A968 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C1E7BF7E2512004900C7A968 /* Manager.h */,
+				C1E7BF7F2512004900C7A968 /* Manager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		C1E7BF832512093200C7A968 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84FFFAAC242A94D600B09A4A /* MainViewController.h */,
+				84FFFAAD242A94D600B09A4A /* MainViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C1E7BF842512095500C7A968 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				84FFFAAF242A94D600B09A4A /* Main.storyboard */,
+				84FFFAB4242A94D900B09A4A /* LaunchScreen.storyboard */,
+				C199C299243D33F200EEDCF6 /* MapView.xib */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		C1E7BF87251209D400C7A968 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C199C29B243D348400EEDCF6 /* MapView.h */,
+				C199C29C243D348400EEDCF6 /* MapView.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		C1E7BF88251209E600C7A968 /* Essentials */ = {
+			isa = PBXGroup;
+			children = (
+				84FFFAA9242A94D600B09A4A /* SceneDelegate.h */,
+				84FFFAAA242A94D600B09A4A /* SceneDelegate.m */,
+				84FFFAA6242A94D600B09A4A /* AppDelegate.h */,
+				84FFFAA7242A94D600B09A4A /* AppDelegate.m */,
+			);
+			path = Essentials;
+			sourceTree = "<group>";
+		};
+		C1E7BF8925120A6C00C7A968 /* SearchPlace */ = {
+			isa = PBXGroup;
+			children = (
+				C1E7BF8A25120A9200C7A968 /* SearchPlaceViewController.h */,
+				C1E7BF8B25120A9200C7A968 /* SearchPlaceViewController.m */,
+			);
+			path = SearchPlace;
+			sourceTree = "<group>";
+		};
+		C1E7BF8D25120B6600C7A968 /* InitView */ = {
+			isa = PBXGroup;
+			children = (
+				C1E7BF8E25120B7800C7A968 /* InitViewController.h */,
+				C1E7BF8F25120B7800C7A968 /* InitViewController.m */,
+			);
+			path = InitView;
+			sourceTree = "<group>";
+		};
+		C1EDB2FB25223FED0095CBC0 /* StockController */ = {
+			isa = PBXGroup;
+			children = (
+				C1EDB2FC2522400E0095CBC0 /* StockController.h */,
+				C1EDB2FD2522400E0095CBC0 /* StockController.m */,
+			);
+			path = StockController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,11 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84FFFABC242A94D900B09A4A /* Build configuration list for PBXNativeTarget "InRoute" */;
 			buildPhases = (
-				1972B19AFF5B0EB0ED6B80AE /* [CP] Check Pods Manifest.lock */,
+				95BBF8AB4C0329E650F99449 /* [CP] Check Pods Manifest.lock */,
 				84FFFA9F242A94D600B09A4A /* Sources */,
 				84FFFAA0242A94D600B09A4A /* Frameworks */,
 				84FFFAA1242A94D600B09A4A /* Resources */,
-				9D69C7F37A9412C7C1943944 /* [CP] Embed Pods Frameworks */,
+				82C9636106BB2DF9A4C933C1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -211,24 +347,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				84FFFAB6242A94D900B09A4A /* LaunchScreen.storyboard in Resources */,
-				C122E6FD24990D5E00A49062 /* Слой 3.png in Resources */,
-				C1673F7A25052524009EF670 /* icons8-ходьба-100.png in Resources */,
-				C122E6FF24990DF100A49062 /* Слой 2.png in Resources */,
-				84FFFAB3242A94D900B09A4A /* Assets.xcassets in Resources */,
-				C122E703249AB1FE00A49062 /* Бизнес-Центр.png in Resources */,
-				C122E701249AB04000A49062 /* Парки.png in Resources */,
 				C199C29A243D33F200EEDCF6 /* MapView.xib in Resources */,
 				84FFFAB1242A94D600B09A4A /* Main.storyboard in Resources */,
-				C15A6229242FF8F10030686E /* init.jpg in Resources */,
-				C1E0C4E924867DE80028CA45 /* Horisontal_logo.png in Resources */,
-				C12507D5249B645C007F3195 /* pointer.png in Resources */,
+				C1E7BF86251209C000C7A968 /* Assets.xcassets in Resources */,
+				C1EDB2F7252231700095CBC0 /* Action.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1972B19AFF5B0EB0ED6B80AE /* [CP] Check Pods Manifest.lock */ = {
+		82C9636106BB2DF9A4C933C1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InRoute/Pods-InRoute-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InRoute/Pods-InRoute-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InRoute/Pods-InRoute-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95BBF8AB4C0329E650F99449 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -250,23 +396,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D69C7F37A9412C7C1943944 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InRoute/Pods-InRoute-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InRoute/Pods-InRoute-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InRoute/Pods-InRoute-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -274,10 +403,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84FFFAAE242A94D600B09A4A /* ViewController.m in Sources */,
+				C1448DD8251BC8960028BB3F /* WebController.m in Sources */,
+				84FFFAAE242A94D600B09A4A /* MainViewController.m in Sources */,
+				C1E7BF802512004900C7A968 /* Manager.m in Sources */,
+				C1E7BF9025120B7800C7A968 /* InitViewController.m in Sources */,
+				C1EDB2FE2522400E0095CBC0 /* StockController.m in Sources */,
 				84FFFAA8242A94D600B09A4A /* AppDelegate.m in Sources */,
 				84FFFAB9242A94D900B09A4A /* main.m in Sources */,
+				C1448DCC251BC6600028BB3F /* AuthController.m in Sources */,
 				84FFFAAB242A94D600B09A4A /* SceneDelegate.m in Sources */,
+				C1448DC4251BC48D0028BB3F /* SearchController.m in Sources */,
+				C1EDB2F6252231700095CBC0 /* Action.m in Sources */,
+				C1E7BF8C25120A9200C7A968 /* SearchPlaceViewController.m in Sources */,
+				C1448DD2251BC7930028BB3F /* AccountController.m in Sources */,
 				C199C29D243D348400EEDCF6 /* MapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,8 +480,8 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -399,7 +537,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -416,20 +554,22 @@
 		};
 		84FFFABD242A94D900B09A4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C0B56A7CA337B42F7F739F1 /* Pods-InRoute.debug.xcconfig */;
+			baseConfigurationReference = 861D2BD9313D35F2AB83081E /* Pods-InRoute.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = InRoute/InRoute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = InRoute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.g4play.InRoute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "InRoute-Bridging-Header.h";
@@ -441,20 +581,22 @@
 		};
 		84FFFABE242A94D900B09A4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 518DDC11ABD5FE793E20320A /* Pods-InRoute.release.xcconfig */;
+			baseConfigurationReference = 5F0E02975B4678833F061BB3 /* Pods-InRoute.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = InRoute/InRoute.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = G978ZRD3WA;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = InRoute/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.g4play.InRoute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
